@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from "react";
+import { Link } from "react-router";
 import { animate, motion } from "framer-motion";
 import BgImage from "./components/BgImage";
 const Header = ({ toHeadrProps }) => {
-  const { handleSearch, input, setInput, currentSearchRef } = toHeadrProps;
+  const { handleSearch, input, setInput, currentSearchRef, setIsFavorotes } =
+    toHeadrProps;
 
   const SearchBtn = () => {
     return (
@@ -56,6 +58,33 @@ const Header = ({ toHeadrProps }) => {
           ref={currentSearchRef}
         />
         <SearchBtn />
+      </section>
+      <section className="text-white flex xl:flex-col md:flex-row sm:justify-center sm:gap-2 items-center w-full">
+        <motion.button
+          whileHover={{
+            backgroundColor: "rgb(255, 255, 255)",
+            color: "rgb(120, 194, 196)",
+            fontWeight: 900,
+          }}
+          transition={{ duration: 0.5 }}
+          onClick={() => setIsFavorotes(false)}
+          className="px-4 py-2 mt-4 rounded-full w-[8rem] text-center border "
+        >
+          Home
+        </motion.button>
+
+        <motion.button
+          whileHover={{
+            backgroundColor: "rgb(255, 255, 255)",
+            color: "rgb(120, 194, 196)",
+            fontWeight: 900,
+          }}
+          transition={{ duration: 0.5 }}
+          onClick={() => setIsFavorotes(true)}
+          className="px-4 py-2 md:mt-4 rounded-full w-[8rem] text-center border "
+        >
+          Favorites
+        </motion.button>
       </section>
     </div>
   );

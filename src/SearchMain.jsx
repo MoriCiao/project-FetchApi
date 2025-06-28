@@ -1,8 +1,8 @@
-import React, { useContext, memo } from "react";
-
+import React, { useContext, memo, useState, useReducer } from "react";
+import { Outlet } from "react-router";
 import { easeInOut, motion, AnimatePresence } from "framer-motion";
 
-const SearchMain = memo(({ data, loading }) => {
+const SearchMain = memo(({ data, state, dispatch }) => {
   const mainBg = "/main-bg.jpg";
 
   return (
@@ -16,6 +16,7 @@ const SearchMain = memo(({ data, loading }) => {
           alt="mainBg"
         />
       </div>
+
       <AnimatePresence mode="wait">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -26,24 +27,39 @@ const SearchMain = memo(({ data, loading }) => {
         >
           {data &&
             data.map((d, index) => {
+              const isFav = state.favorites.some((item) => item.id === d.id);
+
               return (
                 <div key={index} className="img-item" loading="lazy">
-                  <motion.h3
-                    initial={{}}
-                    animate={{
-                      color: [
-                        "rgb(120, 194, 196)",
-                        "rgb(120, 196, 131)",
-                        "rgb(236, 229, 94)",
-                        "rgb(236, 118, 94)",
-                      ],
-                      textShadow: "2px 2px 5px black",
-                    }}
-                    transition={{ duration: 4 }}
-                    className="text-[--theme-text] text-[1.15rem] py-2 font-bold"
-                  >
-                    {d.photographer}
-                  </motion.h3>
+                  <div className="relative flex items-center">
+                    <motion.h3
+                      initial={{}}
+                      animate={{
+                        color: [
+                          "rgb(120, 194, 196)",
+                          "rgb(120, 196, 131)",
+                          "rgb(236, 229, 94)",
+                          "rgb(236, 118, 94)",
+                        ],
+                        textShadow: "2px 2px 5px black",
+                      }}
+                      transition={{ duration: 4 }}
+                      className="text-[--theme-text] text-[1.15rem] py-2 font-bold"
+                    >
+                      {d.photographer}
+                    </motion.h3>
+                    <span
+                      className="absolute right-0 cursor-pointer "
+                      onClick={() =>
+                        dispatch({
+                          type: "IS_LIKE",
+                          payload: d,
+                        })
+                      }
+                    >
+                      {isFav ? "🩷" : "🤍"}
+                    </span>
+                  </div>
 
                   <div className="overflow-hidden rounded-md">
                     <motion.img
