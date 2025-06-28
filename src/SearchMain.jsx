@@ -1,25 +1,33 @@
-import React, { useContext } from "react";
-import { SearchContext } from "./App";
+import React, { useContext, memo } from "react";
+
 import { easeInOut, motion, AnimatePresence } from "framer-motion";
-const SearchMain = () => {
-  const { deBugStyle, data } = useContext(SearchContext);
+
+const SearchMain = memo(({ data, loading }) => {
+  const mainBg = "/main-bg.jpg";
 
   return (
     <section
-      className={`h-screen md:col-start-3 xl:col-span-6 py-8 px-4 mb-4 text-[--theme-text] overflow-y-scroll`}
+      className={`main-area relative h-[100vh] md:col-start-3 xl:col-span-6 py-8 md:px-8 sm:px-4 text-[--theme-text] overflow-y-scroll`}
     >
+      <div className={`fixed z-[-20] top-0 left-0 w-full grayscale`}>
+        <img
+          className={`w-full h-screen opacity-20 brightness-[0.3]`}
+          src={mainBg}
+          alt="mainBg"
+        />
+      </div>
       <AnimatePresence mode="wait">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0.8, y: 20 }}
+          // exit={{ opacity: 0.8, y: 20 }}
           transition={{ duration: 0.8, ease: easeInOut }}
-          className="grid grid-cols-3 gap-4"
+          className="grid md:grid-cols-3 sm:grid-cols-2 gap-4 sm:pb-12 p-2"
         >
           {data &&
             data.map((d, index) => {
               return (
-                <div key={index} className="img-item">
+                <div key={index} className="img-item" loading="lazy">
                   <motion.h3
                     initial={{}}
                     animate={{
@@ -88,6 +96,6 @@ const SearchMain = () => {
       </AnimatePresence>
     </section>
   );
-};
+});
 
 export default SearchMain;
