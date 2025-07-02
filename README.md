@@ -1,12 +1,17 @@
-# React + Vite
+## 🔐 設定 API 金鑰
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+本專案使用 Pexels API 搜尋圖片，請依照下列步驟操作：
 
-Currently, two official plugins are available:
+1. 前往 [Pexels API 官網](https://www.pexels.com/api/) 註冊帳號
+2. 取得你的 API Key
+3. 在專案根目錄新增 `.env` 檔案，並加入以下內容：
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+VITE_API_KEY=你的金鑰
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+4. 然後執行：
+npm install
+npm run dev
+
+
+> 注意：此 `.env` 檔案不會被上傳至 GitHub，需自己建立。
