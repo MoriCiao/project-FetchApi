@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import { Link } from "react-router";
-import { animate, motion } from "framer-motion";
+
+import { motion } from "framer-motion";
 import BgImage from "./components/BgImage";
 const Header = ({ toHeadrProps }) => {
   const { handleSearch, input, setInput, currentSearchRef, setIsFavorotes } =
@@ -9,7 +9,7 @@ const Header = ({ toHeadrProps }) => {
   const SearchBtn = () => {
     return (
       <button
-        className={`h-[2rem] w-60 bg-[--theme-bg] text-white`}
+        className={`h-[2rem] w-60 bg-black text-white`}
         onClick={handleSearch}
       >
         <strong>Search</strong>
@@ -42,10 +42,10 @@ const Header = ({ toHeadrProps }) => {
         </h1>
       </div>
       <section
-        className={`search-area border-0 rounded-md overflow-hidden flex flex-col shadow-[0px_0px_10px_white]`}
+        className={`search-area border-0 rounded-md overflow-hidden flex flex-col shadow-[0px_0px_15px_rgba(255,255,255,.3)]`}
       >
         <input
-          className={`text-center h-[2rem] w-60 bg-[--theme-bg] text-white`}
+          className={`text-center h-[2rem] w-60 bg-black text-white`}
           type="text"
           placeholder="請輸入關鍵字...."
           value={input}
@@ -67,23 +67,10 @@ const Header = ({ toHeadrProps }) => {
             fontWeight: 900,
           }}
           transition={{ duration: 0.5 }}
-          onClick={() => setIsFavorotes(false)}
-          className="px-4 py-2 mt-4 rounded-full w-[8rem] text-center border "
-        >
-          Home
-        </motion.button>
-
-        <motion.button
-          whileHover={{
-            backgroundColor: "rgb(255, 255, 255)",
-            color: "rgb(120, 194, 196)",
-            fontWeight: 900,
-          }}
-          transition={{ duration: 0.5 }}
           onClick={() => setIsFavorotes(true)}
-          className="px-4 py-2 md:mt-4 rounded-full w-[8rem] text-center border "
+          className="px-4 py-2 md:mt-4 rounded-full w-[10rem] text-center border "
         >
-          Favorites
+          🩷 Favorites 🩷
         </motion.button>
       </section>
     </div>

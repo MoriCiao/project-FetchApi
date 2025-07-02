@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+
 import { easeInOut, motion, AnimatePresence } from "framer-motion";
 
 /* 
@@ -9,18 +10,31 @@ const MyFavorites = ({ isFavorotes, setIsFavorotes, state, dispatch }) => {
   // console.log("目前的清單state:" + JSON.stringify(state));
   const FavData = state;
   // console.log(FavData);
+
   return (
     <section
       className={`favorites ${
         isFavorotes ? "" : "hidden"
       } absolute z-[10] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/50 w-3/4 h-3/4 rounded-xl p-2 overflow-hidden border`}
     >
-      <div className="favorites-nav w-full h-[25px] flex  items-center justify-end pr-2 mb-2">
+      <div className="favorites-nav w-full h-[25px] relative flex items-center justify-end pr-2 my-2">
+        <motion.button
+          whileHover={{
+            backgroundColor: "rgb(255,255,255)",
+            color: "rgb(55,60,56)",
+          }}
+          transition={{ duration: 0.2 }}
+          className="absolute border px-2 border-white rounded-full left-4 top-0 text-white"
+          onClick={() => dispatch({ type: "ALL_CLEAN" })}
+        >
+          All Clean
+        </motion.button>
         <button className="" onClick={() => setIsFavorotes(false)}>
           ❌
         </button>
       </div>
-      <div className="favorites-content w-full h-[95%] bg-black/50  p-4  rounded-xl overflow-y-scroll grid md:grid-cols-2 sm:grid-cols-1 gap-4 sm:pb-12 p-2">
+      {/* border border-white/50 */}
+      <div className="favorites-content w-full h-[95%] bg-black/50  p-4  rounded-xl overflow-y-scroll grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 sm:pb-12 p-2">
         {FavData.map((f, index) => {
           return (
             <div key={index} className="img-item" loading="lazy">
