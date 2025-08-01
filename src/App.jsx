@@ -25,18 +25,15 @@ function App() {
       headers: { Authorization: apiKey },
     });
     setData(result.data.photos);
-
-    // console.log(result.data.photos);
   };
 
   const handleSearch = async () => {
-    console.log("Search Click !");
     if (!input || input === "") return;
 
     // 新增 loading
     // 此區觸發時要連動搜尋功能
     setLoading(true);
-    console.log("目前搜尋為：" + input);
+
     const inputSearchURL = `https://api.pexels.com/v1/search?query=${input}&per_page=16&page=1`;
     try {
       const res = await axios.get(inputSearchURL, {
@@ -45,7 +42,7 @@ function App() {
 
       setData(res.data.photos);
     } catch (error) {
-      console.log(error);
+      alert("發生錯誤...請重新整理頁面");
     } finally {
       setLoading(false);
     }
@@ -66,7 +63,7 @@ function App() {
           setData(data.concat(newData));
           setPage((page) => page + 1);
         } catch (error) {
-          console.log(error);
+          alert("發生錯誤...請重新整理頁面");
         } finally {
           setLoading(false);
         }
@@ -83,7 +80,7 @@ function App() {
         concatData(newUrl);
       }
     } else {
-      return console.log("API未輸入，無法啟用此功能...");
+      return alert("API未輸入，無法啟用此功能...");
     }
   };
 

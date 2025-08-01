@@ -7,9 +7,7 @@ import { easeInOut, motion, AnimatePresence } from "framer-motion";
 內容是可以加入收藏的圖片
 */
 const MyFavorites = ({ isFavorotes, setIsFavorotes, state, dispatch }) => {
-  // console.log("目前的清單state:" + JSON.stringify(state));
   const FavData = state;
-  // console.log(FavData);
 
   return (
     <section
