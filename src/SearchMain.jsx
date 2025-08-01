@@ -5,7 +5,7 @@ import { easeInOut, motion, AnimatePresence } from "framer-motion";
 
 const SearchMain = memo(
   ({ data, state, dispatch, visibleMain, setVisibleMain, setApiKey }) => {
-    const mainBg = "/main-bg.jpg";
+    const mainBg = "/searchImage/main-bg.jpg";
 
     return (
       <section
