@@ -13,7 +13,7 @@ const MyFavorites = ({ isFavorotes, setIsFavorotes, state, dispatch }) => {
     <section
       className={`favorites ${
         isFavorotes ? "" : "hidden"
-      } absolute z-[10] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/50 w-3/4 h-3/4 rounded-xl p-2 overflow-hidden border`}
+      }  z-[10] bg-black/50 w-3/4 h-3/4 rounded-xl p-2 overflow-hidden border`}
     >
       <div className="favorites-nav w-full h-[25px] relative flex items-center justify-end pr-2 my-2">
         <motion.button

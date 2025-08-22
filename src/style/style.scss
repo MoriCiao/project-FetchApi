@@ -1,4 +1,4 @@
-@import "tailwindcss";
+
 
 :root{
     --theme-bg: #6699A1;
@@ -6,15 +6,19 @@
 
 
 }
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+
+html,body{
+    width: 100vw;
+    height: 100vh;
+}
+#root {
+    width: 100%;
+    height: 100%;
 }
 
 
-
-body{
-    background-color: var(--theme-bg);
-    
+.search-main{
+    overflow-y: overlay;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
 }

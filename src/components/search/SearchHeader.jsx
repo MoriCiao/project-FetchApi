@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 
 import { motion } from "framer-motion";
-import BgImage from "./components/BgImage";
+import BgImage from "../BgImage";
 const Header = ({ toHeadrProps }) => {
   const { handleSearch, input, setInput, currentSearchRef, setIsFavorotes } =
     toHeadrProps;
@@ -21,10 +21,11 @@ const Header = ({ toHeadrProps }) => {
   });
   return (
     <div
-      className={`relative w-full xl:h-[100vh] sm:h-[30vh]  overflow-hidden flex items-center justify-center col-start-1 col-span-2 xl:shadow-[10px_0px_20px_rgba(0,0,0,1)] md:shadow-[0_10px_20px_rgba(0,0,0,1)] flex flex-col`}
+      className={`relative z-1 w-full xl:h-full sm:h-[30vh] overflow-hidden flex items-center justify-center col-start-1 col-span-2 xl:shadow-[10px_0px_20px_rgba(0,0,0,1)] md:shadow-[0_10px_20px_rgba(0,0,0,1)] flex flex-col `}
     >
-      <BgImage />
-      <div className=" title py-4">
+      <BgImage type="header" />
+
+      <div className="">
         <h1 className="text-[1.5rem] text-white text-center">
           Search for
           <br />
@@ -41,8 +42,8 @@ const Header = ({ toHeadrProps }) => {
           </motion.span>
         </h1>
       </div>
-      <section
-        className={`search-area border-0 rounded-md overflow-hidden flex flex-col shadow-[0px_0px_15px_rgba(255,255,255,.3)]`}
+      <div
+        className={`search-area border-0 rounded-md overflow-hidden flex flex-col shadow-[0px_0px_15px_rgba(255,255,255,.3)] relative z-1`}
       >
         <input
           className={`text-center h-[2rem] w-60 bg-black text-white`}
@@ -58,7 +59,7 @@ const Header = ({ toHeadrProps }) => {
           ref={currentSearchRef}
         />
         <SearchBtn />
-      </section>
+      </div>
       <section className="text-white flex xl:flex-col md:flex-row sm:justify-center sm:gap-2 items-center w-full">
         <motion.button
           whileHover={{

@@ -1,29 +1,33 @@
-import React, { useContext, memo, useState, useReducer } from "react";
-import { Outlet } from "react-router";
-import InputAPI from "./components/InputAPI";
-import { easeInOut, motion, AnimatePresence } from "framer-motion";
-
-const SearchMain = memo(
-  ({ data, state, dispatch, visibleMain, setVisibleMain, setApiKey }) => {
-    const mainBg = "/project-searchImage/main-bg.jpg";
-
+import React, { memo } from "react";
+import InputAPI from "./InputAPI";
+import BgImage from "../BgImage";
+import { useDispatch, useSelector } from "react-redux";
+import PhotoCard from "./PhotoCard";
+const SearchResult = memo(
+  // state, dispatch
+  ({ data, visibleMain, setVisibleMain, setApiKey }) => {
+    const dispatch = useDispatch();
     return (
-      <section
-        className={`main-area relative h-[100vh] md:col-start-3 xl:col-span-6 py-8 md:px-8 sm:px-4 text-[--theme-text] overflow-y-scroll`}
-      >
-        <div className={`fixed z-[-20] top-0 left-0 w-full grayscale`}>
-          <img
-            className={`w-full h-screen opacity-20 brightness-[0.3]`}
-            src={mainBg}
-            alt="mainBg"
-          />
-        </div>
+      <>
+        <BgImage />
 
         <InputAPI
           visibleMain={visibleMain}
           setVisibleMain={setVisibleMain}
           setApiKey={setApiKey}
         />
+
+        {data &&
+          data.map((d) => (
+            <PhotoCard
+              key={d.id}
+              name={d.photographer}
+              src={d.src.large}
+              download={d.src.landscape}
+              blog={d.photographer_url}
+            />
+          ))}
+
         {visibleMain && (
           <AnimatePresence mode="wait">
             <motion.div
@@ -125,9 +129,9 @@ const SearchMain = memo(
             </motion.div>
           </AnimatePresence>
         )}
-      </section>
+      </>
     );
   }
 );
 
-export default SearchMain;
+export default SearchResult;
