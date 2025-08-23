@@ -2,20 +2,14 @@ import React, { useContext, useEffect } from "react";
 
 import { motion } from "framer-motion";
 import BgImage from "../BgImage";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFav, searchKeyword } from "../../features/search/searchSlice";
+import Button from "../Button";
 const Header = ({ toHeadrProps }) => {
-  const { handleSearch, input, setInput, currentSearchRef, setIsFavorotes } =
-    toHeadrProps;
+  const { openFav, keyword } = useSelector((state) => state.search);
+  const dispatch = useDispatch();
+  const { handleSearch, currentSearchRef } = toHeadrProps;
 
-  const SearchBtn = () => {
-    return (
-      <button
-        className={`h-[2rem] w-60 bg-black text-white`}
-        onClick={handleSearch}
-      >
-        <strong>Search</strong>
-      </button>
-    );
-  };
   useEffect(() => {
     currentSearchRef.current.focus();
   });
@@ -49,8 +43,8 @@ const Header = ({ toHeadrProps }) => {
           className={`text-center h-[2rem] w-60 bg-black text-white`}
           type="text"
           placeholder="請輸入關鍵字...."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          value={keyword}
+          onChange={(e) => dispatch(searchKeyword(e.target.value))}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               handleSearch();
@@ -58,22 +52,19 @@ const Header = ({ toHeadrProps }) => {
           }}
           ref={currentSearchRef}
         />
-        <SearchBtn />
+        <Button
+          label="Search"
+          onClick={handleSearch}
+          otherSytle="border-0 text-white bg-black cursor-pointer py-1"
+        />
       </div>
-      <section className="text-white flex xl:flex-col md:flex-row sm:justify-center sm:gap-2 items-center w-full">
-        <motion.button
-          whileHover={{
-            backgroundColor: "rgb(255, 255, 255)",
-            color: "rgb(120, 194, 196)",
-            fontWeight: 900,
-          }}
-          transition={{ duration: 0.5 }}
-          onClick={() => setIsFavorotes(true)}
-          className="px-4 py-2 md:mt-4 rounded-full w-[10rem] text-center border "
-        >
-          🩷 Favorites 🩷
-        </motion.button>
-      </section>
+      <div className="text-white flex xl:flex-col md:flex-row sm:justify-center sm:gap-2 items-center w-full">
+        <Button
+          label="🩷 Favorites 🩷"
+          onClick={() => dispatch(toggleFav(!openFav))}
+          otherSytle="hover:bg-white hover:text-red-500 hover:tracking-widest hover:border-red-500 w-60 p-2 rounded-full my-4 transition-all duration-500"
+        />
+      </div>
     </div>
   );
 };

@@ -1,7 +1,4 @@
-import { div, p } from 'framer-motion/client'
-import React, { useState } from 'react'
-
-
+import React from 'react'
 
 type Status = {
     type:"loading" | "success" | "error" | "idle",

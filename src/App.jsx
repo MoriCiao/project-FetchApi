@@ -8,13 +8,20 @@ import Title from "./components/Title";
 function App() {
   const { pathname } = useLocation();
 
+  const pageStyle =
+    pathname === "/"
+      ? "bg-gradient-to-br from-amber-100 to-amber-200 p-0 "
+      : pathname === "/searchImg"
+      ? "bg-black p-0 "
+      : pathname === "/otherApi"
+      ? "bg-white p-0"
+      : null;
+
   return (
     <section
-      className={`homepage relative w-full h-full flex flex-col  overflow-x-hidden bg-black ${
-        pathname !== "/" ? "p-0" : "p-20"
-      }`}
+      className={`homepage relative w-full h-full flex flex-col  overflow-x-hidden  ${pageStyle} `}
     >
-      <div className="relative h-[10%] w-full  text-center flex items-center justify-center bg-black text-white">
+      <div className="relative h-[10%] w-full text-center flex items-center justify-center">
         <Title
           title={
             pathname === "/"
@@ -23,6 +30,15 @@ function App() {
               ? "Search Image"
               : pathname === "/otherApi"
               ? "Other API"
+              : null
+          }
+          otherStyle={
+            pathname === "/"
+              ? "text-black"
+              : pathname === "/searchImg"
+              ? "text-white"
+              : pathname === "/otherApi"
+              ? "text-black"
               : null
           }
         />

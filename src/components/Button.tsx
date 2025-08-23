@@ -9,7 +9,7 @@ type BtnProps = {
 const Button = ({label, onClick, otherSytle} :BtnProps): React.JSX.Element => {
   return (
     <button 
-        className={`border text-large font-bold px-4 ${otherSytle}`} 
+        className={`border text-large font-bold px-4 cursor-pointer ${otherSytle}`} 
         onClick={onClick}>
         {label}
     </button>
