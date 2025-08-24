@@ -1,18 +1,19 @@
 import React from 'react'
 
 type keyProps = {
-  key :string,
+  keyword :string | number
   placeholder?:string
+  otherStyle?: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const KeywordInput :React.FC<keyProps> = ({placeholder,key, onChange}) :React.JSX.Element => {
+const KeywordInput :React.FC<keyProps> = ({placeholder,keyword, onChange,otherStyle}) :React.JSX.Element => {
   return (
    <input 
     type="text"  
-    className={`border indent-2`} 
+    className={`border indent-2 ${otherStyle}`} 
     placeholder={placeholder}
-    value={key} onChange={onChange} />
+    value={keyword} onChange={onChange} />
   )
 }
 

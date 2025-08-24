@@ -6,12 +6,13 @@ import MyFavorites from '../components/search/MyFavorites';
 import Button from '../components/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import {getData, moreData,setLoading} from "../features/search/searchSlice"
+import StatusFrame from '../components/StatusFrame';
 
 
 const SearchImg = () => {
   const [page, setPage] = useState<number>(1);
   const currentSearchRef = useRef<HTMLInputElement>(null);
-  const { isAuth, APIkey ,data ,openFav, keyword,initialURL, isLoading} = useSelector((state:any) => state.search)
+  const { isAuth, APIkey ,data ,openFav, keyword,initialURL, status} = useSelector((state:any) => state.search)
   const dispatch = useDispatch()
 
   const searchURL = async (url:string) => {
@@ -101,17 +102,11 @@ const SearchImg = () => {
 
         <MyFavorites/>
       </div>}
+      {(status.isLoading || status.isDownload || status.isError )&& <StatusFrame/>}
       
-      {isLoading && (
-        <div className='fixed inset-0 z-[10] bg-black/50 flex items-center justify-center'>
-        <span className="flex items-center justify-center bg-black/50 m-auto w-[200px] h-[200px] rounded-full text-center text-white text-[1.5rem]">
-          Loading...
-        </span>
-        </div>
-      )}
 
       {/* 更多圖片按鈕 */}
-      <Button label={"More"} onClick={handleMore} otherSytle='absolute bottom-5 right-10 z-10 w-25 h-10 bg-white/50 text-white rounded-md transition-all duration-500 hover:bg-orange-500 hover:text-black hover:font-bold hover:scale-110'/>
+      <Button label={"More"} onClick={handleMore} otherStyle='absolute bottom-5 right-10 z-10 w-25 h-10 bg-white/50 text-white rounded-md transition-all duration-500 hover:bg-orange-500 hover:text-black hover:font-bold hover:scale-110'/>
      
     
     </div>

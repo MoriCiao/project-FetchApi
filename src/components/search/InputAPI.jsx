@@ -32,7 +32,7 @@ const InputAPI = () => {
         <Button
           label="提交"
           onClick={hanldeSubmit}
-          otherSytle="hover:text-black hover:bg-white cursor-pointer"
+          otherStyle="hover:text-black hover:bg-white cursor-pointer"
         />
       </div>
     </>

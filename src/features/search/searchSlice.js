@@ -1,11 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import MyFavorites from "../../components/search/MyFavorites";
+
 const initialState = {
   keyword: "",
   APIkey: "",
   isAuth: false,
   data: [],
-  isLoading: false,
+  status: {
+    isLoading: false,
+    isDownload: false,
+    isError: false,
+  },
   openFav: false,
   favorites: [],
   initialURL: "https://api.pexels.com/v1/curated?per_page=16&page=1",
@@ -36,7 +42,7 @@ const searchSlice = createSlice({
       state.keyword = action.payload;
     },
     setLoading(state, action) {
-      state.isLoading = action.payload;
+      state.status.isLoading = action.payload;
     },
     isLike(state, action) {
       const item = action.payload;
@@ -53,6 +59,12 @@ const searchSlice = createSlice({
     allClean(state, action) {
       state.favorites = [];
     },
+    setDownload(state, action) {
+      return {
+        ...state,
+        status: { ...state.status, isDownload: action.payload },
+      };
+    },
   },
 });
 
@@ -66,6 +78,7 @@ export const {
   setLoading,
   isLike,
   allClean,
+  setDownload,
 } = searchSlice.actions;
 
 export default searchSlice.reducer;

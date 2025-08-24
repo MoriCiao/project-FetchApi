@@ -17,7 +17,8 @@ html,body{
 }
 
 
-.search-main{
+.search-main,
+.favorites-content{
     overflow-y: overlay;
     scrollbar-width: none;
     scroll-behavior: smooth;

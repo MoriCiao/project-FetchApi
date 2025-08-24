@@ -55,14 +55,14 @@ const Header = ({ toHeadrProps }) => {
         <Button
           label="Search"
           onClick={handleSearch}
-          otherSytle="border-0 text-white bg-black cursor-pointer py-1"
+          otherStyle="border-0 text-white bg-black cursor-pointer py-1"
         />
       </div>
       <div className="text-white flex xl:flex-col md:flex-row sm:justify-center sm:gap-2 items-center w-full">
         <Button
           label="🩷 Favorites 🩷"
           onClick={() => dispatch(toggleFav(!openFav))}
-          otherSytle="hover:bg-white hover:text-red-500 hover:tracking-widest hover:border-red-500 w-60 p-2 rounded-full my-4 transition-all duration-500"
+          otherStyle="hover:bg-white hover:text-red-500 hover:tracking-widest hover:border-red-500 w-60 p-2 rounded-full my-4 transition-all duration-500"
         />
       </div>
     </div>

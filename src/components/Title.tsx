@@ -16,7 +16,7 @@ const Title = ({title,otherStyle} :TitleProps) => {
         : pathname === "/searchImg"
         ? "bg-black"
         : pathname === "/otherApi"
-        ? "bg-white"
+        ? "bg-transparent"
         : null;
 
 

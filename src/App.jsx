@@ -14,7 +14,7 @@ function App() {
       : pathname === "/searchImg"
       ? "bg-black p-0 "
       : pathname === "/otherApi"
-      ? "bg-white p-0"
+      ? "bg-gradient-to-br from-zinc-500 to-zinc-800 p-0"
       : null;
 
   return (
@@ -38,7 +38,7 @@ function App() {
               : pathname === "/searchImg"
               ? "text-white"
               : pathname === "/otherApi"
-              ? "text-black"
+              ? "text-white"
               : null
           }
         />
@@ -46,7 +46,7 @@ function App() {
           <NavigateBtn
             to="/"
             label="返回首頁"
-            className="absolute top-50% left-5 "
+            className="absolute top-50% left-5 cursor-pointer hover:bg-white hover:text-black transition duration-500"
           />
         )}
       </div>
