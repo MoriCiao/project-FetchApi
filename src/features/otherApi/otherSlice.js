@@ -7,11 +7,14 @@ const initialState = {
   keyword: "",
   data: [],
   filtered: [],
+  localtion: {
+    latitude: "25.03",
+    longitude: "121.56",
+  },
   link: {
     bike_url:
       "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json",
-    weather_url:
-      "https://api.open-meteo.com/v1/forecast?latitude=25.0&longitude=121.3&hourly=temperature_2m",
+    weather_url: `https://api.open-meteo.com/v1/forecast?latitude=25.03&longitude=121.56&hourly=temperature_2m`,
   },
   statusApi: {
     isLoading: false,
@@ -25,15 +28,26 @@ const otherSlice = createSlice({
   initialState,
   reducers: {
     getUrl(state, action) {
-      console.log(action.payload);
       state.currentURL = action.payload;
       // 選擇對應的連結後  loading - 抓取資料
     },
     resetURL(state, action) {
       return { ...state, currentURL: "", data: [] };
     },
+    changeLocation(state, action) {
+      const newlocation = action.payload;
+      state.localtion.latitude = newlocation.latitude;
+      state.localtion.longitude = newlocation.longitude;
+
+      const newloactionUrl = `https://api.open-meteo.com/v1/forecast?latitude=${newlocation.latitude}&longitude=${newlocation.longitude}&hourly=temperature_2m`;
+      state.currentURL = newloactionUrl;
+    },
     updateData(state, action) {
-      state.data = action.payload;
+      if (Array.isArray(action.payload)) {
+        state.data = action.payload;
+      } else {
+        state.data = [action.payload];
+      }
     },
     findDistrict(state, action) {
       const value = action.payload;
@@ -74,6 +88,7 @@ export const {
   findDistrict,
   findAddress,
   setLoading,
+  changeLocation,
 } = otherSlice.actions;
 
 export default otherSlice.reducer;

@@ -15,7 +15,7 @@ const Select = ({ }) => {
         <select name="apiSelect" id="apiSelect" className='border  rounded-md bg-white text-black px-8' onChange={(e)=> dispatch(getUrl(e.target.value))}>
             <option value=""></option>
             <option value={link.bike_url}>台北市即時 YouBike 站點資訊</option>
-            <option value={link.weather_url}>Open-Meteo 天氣預報</option>
+            <option value={link.weather_url}>Open-Meteo 地區溫度</option>
         </select>    
     </div>
 

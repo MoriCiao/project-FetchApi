@@ -13,7 +13,7 @@ export default function YouBike() {
     const dispatch= useDispatch()
 
     const currentData = (keyword.trim() === "" && keyword_Dis === "") ? (data || []) : (filtered || []) 
-    console.log(currentData)
+
     const [currentPage, setCurrentPage] = useState(1)
     const totalPage = Math.ceil( currentData.length / data_per_page)
     const startIndex = (currentPage - 1) * data_per_page
@@ -27,12 +27,6 @@ export default function YouBike() {
         },{})
         return Object.entries(result)
     }
-
-    useEffect(()=>{
-
-    },[])
-
-
     useEffect(()=>{
         setCurrentPage(1)
     },[currentURL, keyword])

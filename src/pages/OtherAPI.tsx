@@ -13,7 +13,7 @@ type status = { type :  "idle" | "loading" | "success" | "error" , msg :string}
 
 
 const OtherAPI = () => {
-  const { data , currentURL, link , statusApi} = useSelector((state: any) => state.otherApi)
+  const { data , currentURL, link , statusApi, localtion} = useSelector((state: any) => state.otherApi)
   const [status , setStatus] = useState<status>({type: "idle" , msg: "目前閒置中..." })
   const dispatch = useDispatch()
 
@@ -55,7 +55,7 @@ const OtherAPI = () => {
   },[currentURL],)
 
   return (
-    <div className='w-full h-full px-12 pb-8 text-white'>
+    <div className='relative w-full h-full px-12 pb-8 text-white'>
       
       <div className='other-header flex  gap-4 h-[10%] flex items-center justify-center'>
         <Select/>
@@ -63,7 +63,7 @@ const OtherAPI = () => {
       </div>
       <div className='other-main h-[90%] p-8 overflow-y-auto '>
         {(status.type === "success" && currentURL === link.bike_url )  && <YouBike />}
-        {(status.type === "success" && currentURL === link.weather_url )  && <Weather />}
+        {(status.type === "success" )  && <Weather />}
       </div>
       {( statusApi.isLoading )&& <StatusFrame/>}
 
