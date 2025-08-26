@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import MyFavorites from "../../components/search/MyFavorites";
 
 const initialState = {
   keyword: "",
   APIkey: "",
   isAuth: false,
-  data: [],
+  ImgData: [],
   status: {
     isLoading: false,
     isDownload: false,
@@ -30,10 +28,10 @@ const searchSlice = createSlice({
     searchData(state, action) {},
     getData(state, action) {
       state.isAuth = true;
-      state.data = action.payload;
+      state.ImgData = action.payload;
     },
     moreData(state, action) {
-      state.data = [...state.data, ...action.payload];
+      state.ImgData = [...state.ImgData, ...action.payload];
     },
     toggleFav(state, action) {
       state.openFav = action.payload;

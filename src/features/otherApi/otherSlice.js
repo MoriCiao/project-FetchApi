@@ -28,11 +28,20 @@ const otherSlice = createSlice({
   initialState,
   reducers: {
     getUrl(state, action) {
+      state.data = [];
       state.currentURL = action.payload;
       // 選擇對應的連結後  loading - 抓取資料
     },
-    resetURL(state, action) {
-      return { ...state, currentURL: "", data: [] };
+    resetData(state, action) {
+      console.log(action.payload);
+      return {
+        ...state,
+        currentURL: "",
+        keyword_Dis: "",
+        keyword: "",
+        data: [],
+        filtered: [],
+      };
     },
     changeLocation(state, action) {
       const newlocation = action.payload;
@@ -40,6 +49,8 @@ const otherSlice = createSlice({
       state.localtion.longitude = newlocation.longitude;
 
       const newloactionUrl = `https://api.open-meteo.com/v1/forecast?latitude=${newlocation.latitude}&longitude=${newlocation.longitude}&hourly=temperature_2m`;
+
+      state.link.weather_url = newloactionUrl;
       state.currentURL = newloactionUrl;
     },
     updateData(state, action) {
@@ -83,7 +94,7 @@ const otherSlice = createSlice({
 
 export const {
   getUrl,
-  resetURL,
+  resetData,
   updateData,
   findDistrict,
   findAddress,

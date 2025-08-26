@@ -5,6 +5,7 @@ import {TempItems , Hourly} from './WeatherItems'
 import KeywordInput from '../KeywordInput'
 import { changeLocation } from "../../features/otherApi/otherSlice"
 import Button from '../Button'
+import Map from '../Map'
 
 const Weather = () => {
     const {data , currentURL, localtion} = useSelector((state:any)=>state.otherApi)
@@ -14,7 +15,6 @@ const Weather = () => {
         longitude : localtion.longitude
   })
    const dispatch = useDispatch()
-   
     useEffect(()=>{
 
     },[currentURL,data])
@@ -23,10 +23,10 @@ const Weather = () => {
     <div className='flex gap-4 w-full h-full '>
         {data && <Hourly data={data} isOpen={isOpen} setIsOpen={setIsOpen}/>}
 
-        <div className='w-full h-full border flex-3'>
-         MaP
+        <div className='relative z-[1] w-full h-full border flex-3'>
+         <Map lat={inputlocation.latitude} long={inputlocation.longitude}/>
         </div>
-        <div className='flex flex-2 flex-col gap-4'>
+        <div className='flex flex-2 flex-col gap-4 px-4'>
             <div className='w-full flex items-center justify-around text-xl '>
                 <div className='flex py-2'>
                     <label htmlFor="">經度：</label>
@@ -51,7 +51,7 @@ const Weather = () => {
             {data && data.map((i,index)=>{
                 const entries = Object.entries(i)
                 return (
-                    <div key={index} className='border flex flex-2 flex-col gap-4 p-4'>
+                    <div key={index} className='flex flex-2 flex-col gap-4'>
                         <TempItems entries={entries} setIsOpen={setIsOpen}/>
 
                         <div className='flex flex-col gap-2'>

@@ -12,7 +12,7 @@ import StatusFrame from '../components/StatusFrame';
 const SearchImg = () => {
   const [page, setPage] = useState<number>(1);
   const currentSearchRef = useRef<HTMLInputElement>(null);
-  const { isAuth, APIkey ,data ,openFav, keyword,initialURL, status} = useSelector((state:any) => state.search)
+  const { isAuth, APIkey ,ImgData ,openFav, keyword,initialURL, status} = useSelector((state:any) => state.search)
   const dispatch = useDispatch()
 
   const searchURL = async (url:string) => {
@@ -55,7 +55,6 @@ const SearchImg = () => {
           headers: { Authorization: APIkey },
         });
         let newData = res.data.photos;
-        console.log(newData)
         dispatch(moreData(newData))
         setPage((page) => page + 1);
       } catch (error) {
@@ -106,7 +105,7 @@ const SearchImg = () => {
       
 
       {/* 更多圖片按鈕 */}
-      <Button label={"More"} onClick={handleMore} otherStyle='absolute bottom-5 right-10 z-10 w-25 h-10 bg-white/50 text-white rounded-md transition-all duration-500 hover:bg-orange-500 hover:text-black hover:font-bold hover:scale-110'/>
+      <Button label={"More"} onClick={handleMore} otherStyle='absolute z-[5] bottom-5 right-10 z-10 w-25 h-10 bg-white/50 text-white rounded-md transition-all duration-500 hover:bg-orange-500 hover:text-black hover:font-bold hover:scale-110'/>
      
     
     </div>

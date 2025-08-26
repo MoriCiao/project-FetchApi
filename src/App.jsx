@@ -25,7 +25,7 @@ function App() {
         <Title
           title={
             pathname === "/"
-              ? "Fetch Api"
+              ? "Fetch API"
               : pathname === "/searchImg"
               ? "Search Image"
               : pathname === "/otherApi"

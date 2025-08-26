@@ -4,6 +4,7 @@ import { findDistrict, findAddress } from "../../features/otherApi/otherSlice"
 import KeywordInput from '../KeywordInput'
 import Pagination from './Pagination'
 import Select from './select'
+import Button from '../Button'
 
 const data_per_page = 20
 
@@ -59,6 +60,7 @@ export default function YouBike() {
                 <th className={` py-2 px-4 border border-gray-900`}>編號</th>
                 <th className={` py-2 px-4 border border-gray-900`}>地區</th>
                 <th className={` py-2 px-4 border border-gray-900`}>地址</th>
+                <th className={` py-2 px-4 border border-gray-900`}>地圖</th>
                 <th className={` py-2 px-4 border border-gray-900`}>已租借</th>
                 <th className={` py-2 px-4 border border-gray-900`}>未租借</th>
                 <th className={` py-2 px-4 border border-gray-900`}>總數量</th>
@@ -68,11 +70,15 @@ export default function YouBike() {
         <tbody>
             {Array.isArray(data) && isBike &&  CurrentItems.map((d, index :number) :React.ReactNode=>{
                 const displayIndex = index + 1
+                const address = d.sarea + d.ar
                 return (
                     <tr key={displayIndex} className={`odd:hover:bg-gray-800 even:hover:bg-gray-500 even:hover:text-white transition-all duration-500 `}>
                         <th className={`py-2 px-4 border border-gray-900`}>{displayIndex}</th>
                         <th className={`py-2 px-4 border border-gray-900`}>{d.sarea}</th>
                         <th className={`py-2 px-4 border border-gray-900`}>{d.ar}</th>
+                        <th className={` border border-gray-900`}>
+                            <a href={`https://www.google.com/maps?q=${address}`} className='inline-block w-full h-full' target="_blank" rel="noopener noreferrer">📍</a>
+                        </th>
                         <th className={`py-2 px-4 border border-gray-900`}>{d.available_rent_bikes}</th>
                         <th className={`py-2 px-4 border border-gray-900`}>{d.available_return_bikes}</th>
                         <th className={`py-2 px-4 border border-gray-900`}>{d.Quantity}</th>

@@ -21,7 +21,7 @@ const Title = ({title,otherStyle} :TitleProps) => {
 
 
   return (
-    <h1 className={`w-full h-full flex items-center justify-center text-3xl font-[900] tracking-wide ${bg} ${otherStyle}`}>{title}</h1>
+    <h1 className={`w-full h-full flex items-center justify-center text-3xl font-[900] tracking-wide select-none ${bg} ${otherStyle}`}>{title}</h1>
   )
 }
 

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PhotoCard from "./PhotoCard";
 import { isLike } from "../../features/search/searchSlice";
 const SearchResult = () => {
-  const { isAuth, data, favorites } = useSelector((state) => state.search);
+  const { isAuth, ImgData, favorites } = useSelector((state) => state.search);
 
   const dispatch = useDispatch();
   return (
@@ -13,10 +13,10 @@ const SearchResult = () => {
       <BgImage />
       {!isAuth && <InputAPI />}
 
-      {data &&
-        data.map((d) => (
+      {ImgData &&
+        ImgData.map((d) => (
           <PhotoCard
-            key={d.id}
+            key={`${d.id}`}
             name={d.photographer}
             src={d.src.large}
             download={d.src.landscape}
