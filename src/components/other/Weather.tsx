@@ -23,8 +23,8 @@ const Weather = () => {
     <div className='flex gap-4 w-full h-full '>
         {data && <Hourly data={data} isOpen={isOpen} setIsOpen={setIsOpen}/>}
 
-        <div className='relative z-[1] w-full h-full border flex-3'>
-         <Map lat={inputlocation.latitude} long={inputlocation.longitude}/>
+        <div className='relative z-[1] w-full h-full  flex-3'>
+         <Map lat={inputlocation.latitude} long={inputlocation.longitude} />
         </div>
         <div className='flex flex-2 flex-col gap-4 px-4'>
             <div className='w-full flex items-center justify-around text-xl '>

@@ -19,7 +19,7 @@ const PhotoCard = ({id, name,src ,alt = "圖片展示", download ,blog, isLike ,
 
 
 
-  return <div key={id} className="group relative z-1 w-90 h-100 photo-card flex flex-col items-center justify-center gap-2 border border-white/20 rounded-sm px-4 py-2 text-white bg-gradient-to-br from-white/10 via-white/20 to-white/10 transition duration-500 hover:-translate-y-[5px]">
+  return <div key={id} className="group relative z-1 w-full h-100 photo-card flex flex-col items-center justify-center gap-2 border border-white/20 rounded-sm px-4 py-2 text-white bg-gradient-to-br from-white/10 via-white/20 to-white/10 transition duration-500 hover:-translate-y-[5px]">
     <div className="w-full flex justify-between ">
       <motion.h3 className="text-lg font-[800]">攝影師：{name}</motion.h3> 
       <motion.span

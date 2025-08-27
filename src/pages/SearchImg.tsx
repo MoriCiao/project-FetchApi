@@ -91,7 +91,7 @@ const SearchImg = () => {
       <div className={`search-header flex-1 h-full `}>
         <SearchHeader toHeadrProps={toHeadrProps} />
       </div>
-      <div className={`search-main flex-4 h-full w-full grid grid-cols-4 gap-6 px-6 pb-8 pt-2 `}>
+      <div className={`search-main flex-4 h-full w-full grid grid-cols-4 place-items-center gap-4 px-4 pb-8 pt-2 `}>
         <SearchResult/>
       </div>
     

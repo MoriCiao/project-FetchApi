@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 const Select = ({ }) => {
-    const { link } = useSelector((state: any) => state.otherApi)
+    const { link ,currentURL} = useSelector((state: any) => state.otherApi)
     const dispatch = useDispatch()
 
   return (
@@ -14,6 +14,7 @@ const Select = ({ }) => {
         <label>請選擇想抓取的資料：</label>
         <select name="apiSelect" id="apiSelect" 
         className='border rounded-md bg-white text-black px-8' 
+        value={currentURL}
         onChange={(e)=>dispatch(getUrl(e.target.value))}>
             <option value=""></option>
             <option value={link.bike_url}>台北市即時 YouBike 站點資訊</option>

@@ -7,7 +7,7 @@ function StatusFrame() {
     const { status } =useSelector((state:any )=> state.search)
     const { statusApi } = useSelector((state: any) => state.otherApi)
   return (
-    <div className='fixed inset-0 z-[10] bg-black/50 flex items-center justify-center w-full h-full border border-white select-none'>
+    <div className='fixed inset-0 z-[10] bg-black/50 flex items-center justify-center w-full h-full select-none'>
         {(status.isLoading || statusApi.isLoading ) && <p className={`${p_style}`}>Loading...</p>}
         {(status.isDownload || statusApi.isDownload ) && <p className={`${p_style}`}>Download ✅</p>}
         {(status.isError || statusApi.isError ) && <p className={`${p_style}`}>Error! 🚨</p>}
