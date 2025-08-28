@@ -21,7 +21,7 @@ function App() {
     <section
       className={`homepage relative w-full h-full flex flex-col  overflow-x-hidden  ${pageStyle} `}
     >
-      <div className="relative h-[10%] w-full text-center flex items-center justify-center">
+      <div className="relative lg:h-[10%] h-[20%] py-8 w-full text-center flex items-center justify-center">
         <Title
           title={
             pathname === "/"
@@ -46,12 +46,12 @@ function App() {
           <NavigateBtn
             to="/"
             label="返回首頁"
-            className="absolute top-50% left-5 cursor-pointer hover:bg-white hover:text-black transition duration-500"
+            className="absolute sm:top-1/2 top-4 sm:left-5 left-4 cursor-pointer hover:bg-white hover:text-black transition duration-500"
           />
         )}
       </div>
       <div
-        className={`w-full h-[90%] flex items-center justify-center gap-15 ${
+        className={`w-full lg:h-[90%] h-full flex md:flex-nowrap flex-wrap items-center justify-center lg:gap-15 sm:gap-8 gap-4 ${
           pathname !== "/" ? "p-0" : "p-20"
         }`}
       >

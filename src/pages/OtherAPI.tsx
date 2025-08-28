@@ -79,13 +79,13 @@ const OtherAPI = () => {
   return (
     <div className='relative w-full h-full px-12 pb-0 text-white'>
       
-      <div className='other-header flex  gap-4 h-[10%] flex items-center justify-center'>
-        <Select/>
-        <FetchStatus type={status.type} msg={status.msg}/>
+      <div className='other-header gap-4 md:h-[10%] h-auto w-auto flex md:flex-row flex-col items-center justify-center'>
          {/* @ts-ignore */}
-        <Button label='Reset' onClick={handleReset} otherStyle="rounded-md"/>
+        <Button label='Reset' onClick={handleReset} otherStyle="rounded-md md:w-auto w-full max-w-80 py-2"/>
+        <FetchStatus type={status.type} msg={status.msg}/>
+        <Select/>
       </div>
-      <div className='other-main h-[90%] p-8 overflow-y-auto '>
+      <div className='other-main md:h-[90%] md:p-8  md:overflow-y-auto  w-full'>
         {(status.type === "success" && currentURL === link.bike_url )  && <YouBike />}
         {(status.type === "success" ) && currentURL === link.weather_url   && <Weather />}
       </div>

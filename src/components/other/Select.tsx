@@ -10,7 +10,7 @@ const Select = ({ }) => {
     const dispatch = useDispatch()
 
   return (
-    <div className='flex gap-2 p-4'>
+    <div className='flex md:flex-row flex-col gap-2 p-4'>
         <label>請選擇想抓取的資料：</label>
         <select name="apiSelect" id="apiSelect" 
         className='border rounded-md bg-white text-black px-8' 

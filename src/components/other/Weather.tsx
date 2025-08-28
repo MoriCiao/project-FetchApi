@@ -20,13 +20,13 @@ const Weather = () => {
     },[currentURL,data])
  
   return (
-    <div className='flex gap-4 w-full h-full '>
+    <div className='md:flex lg:flex-row flex-col md:gap-4 gap-10 w-full h-full border overflow-auto'>
         {data && <Hourly data={data} isOpen={isOpen} setIsOpen={setIsOpen}/>}
 
-        <div className='relative z-[1] w-full h-full  flex-3'>
+        <div className='relative z-[1] w-full md:h-[70vh] min-h-100 md:flex-3 flex-1 border border-red-500 overflow-hidden'>
          <Map lat={inputlocation.latitude} long={inputlocation.longitude} />
         </div>
-        <div className='flex flex-2 flex-col gap-4 px-4'>
+        <div className='flex md:flex-2 flex-1 flex-col gap-4 px-4'>
             <div className='w-full flex items-center justify-around text-xl '>
                 <div className='flex py-2'>
                     <label htmlFor="">經度：</label>

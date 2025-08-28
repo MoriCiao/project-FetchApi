@@ -15,15 +15,15 @@ const Header = ({ toHeadrProps }) => {
   });
   return (
     <div
-      className={`relative z-1 w-full xl:h-full sm:h-[30vh] overflow-hidden flex items-center justify-center col-start-1 col-span-2 xl:shadow-[10px_0px_20px_rgba(0,0,0,1)] md:shadow-[0_10px_20px_rgba(0,0,0,1)] flex flex-col `}
+      className={`relative z-1 w-full md:h-full p-4 overflow-hidden flex gap-2 items-center justify-center col-start-1 col-span-2 xl:shadow-[10px_0px_20px_rgba(0,0,0,1)] md:shadow-[0_10px_20px_rgba(0,0,0,1)] flex flex-col `}
     >
       <BgImage type="header" />
 
-      <div className="">
-        <h1 className="text-[1.5rem] text-white text-center">
+      <div className=" w-full ">
+        <h1 className="text-[1.25rem] text-white text-center">
           Search for
           <br />
-          <motion.span className="text-[2rem]">
+          <motion.span className="text-[1.5rem]">
             What You Want{" "}
             <motion.span
               className="inline-block"
@@ -37,10 +37,10 @@ const Header = ({ toHeadrProps }) => {
         </h1>
       </div>
       <div
-        className={`search-area border-0 rounded-md overflow-hidden flex flex-col shadow-[0px_0px_15px_rgba(255,255,255,.3)] relative z-1`}
+        className={`search-area md:w-full w-[80%] border-0 rounded-md overflow-hidden flex flex-col shadow-[0px_0px_15px_rgba(255,255,255,.3)] relative z-1`}
       >
         <input
-          className={`text-center h-[2rem] w-60 bg-black text-white`}
+          className={`text-center h-[2rem] w-full bg-black text-white`}
           type="text"
           placeholder="請輸入關鍵字...."
           value={keyword}
@@ -58,7 +58,7 @@ const Header = ({ toHeadrProps }) => {
           otherStyle="border-0 text-white bg-black cursor-pointer py-1"
         />
       </div>
-      <div className="text-white flex xl:flex-col md:flex-row sm:justify-center sm:gap-2 items-center w-full">
+      <div className="text-white flex xl:flex-col md:flex-row sm:gap-2 justify-center items-center w-full">
         <Button
           label="🩷 Favorites 🩷"
           onClick={() => dispatch(toggleFav(!openFav))}
