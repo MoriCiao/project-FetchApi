@@ -87,7 +87,7 @@ export const Hourly = ({data,isOpen,setIsOpen}) => {
     }   
 
   return (
-    <div className={`hourly absolute z-[10] left-0 top-0 flex flex-col gap-4 md:max-w-1/2 lg:w-150 w-[100vw] md:h-full h-[100vh] md:p-8 p-2 pb-4 transition duration-1000 bg-black/80 overflow-y-auto ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-150 opacity-0"} `}>
+    <div className={`hourly absolute z-[10] left-0 top-0 flex flex-col gap-4 md:max-w-1/2 lg:w-150 w-[100vw] md:h-full h-[100vh] md:p-8 p-2 pb-4 transition duration-1000 bg-black/80 overflow-y-auto backdrop-blur-sm ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-150 opacity-0"} `}>
         <div className='w-full flex justify-end px-0'>
             <Button 
                 label='❎' 

@@ -98,7 +98,7 @@ const SearchImg = () => {
     
 
       {openFav && 
-        <div className='w-full h-full absolute z-10 top-0 left-0 bg-black/50 flex items-center justify-center'>
+      <div className='w-full h-full absolute z-10 top-0 left-0 bg-black/50 flex items-center justify-center'>
 
         <MyFavorites/>
       </div>}
@@ -106,12 +106,12 @@ const SearchImg = () => {
       
 
       {/* 更多圖片按鈕 */}
-      <Button label={"More"} onClick={handleMore} otherStyle='absolute z-[5] bottom-5 right-10 z-10 w-25 h-10 bg-white/50 text-white rounded-md transition-all duration-500 hover:bg-orange-500 hover:text-black hover:font-bold hover:scale-110'/>
+      <Button label={"More"} onClick={handleMore} otherStyle='md:absolute fixed z-[5] bottom-5 right-10 z-10 w-25 h-10 bg-white/50 text-white rounded-md transition-all duration-500 hover:bg-orange-500 hover:text-black hover:font-bold hover:scale-110'/>
       
       <Button
         label="🩷"
         onClick={() => dispatch(toggleFav(!openFav))}
-        otherStyle="md:hidden block absolute left-4 bottom-5 z-1 border-0 rounded-full w-10 h-10 text-2xl !px-0 hover:bg-white/50"
+        otherStyle="md:hidden block md:absolute fixed  left-4 bottom-5 z-1 border-0 rounded-full w-10 h-10 text-2xl !px-0 hover:bg-white/50"
       />
     
     </div>

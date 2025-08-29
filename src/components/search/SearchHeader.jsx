@@ -62,7 +62,7 @@ const Header = ({ toHeadrProps }) => {
         <Button
           label="🩷 Favorites 🩷"
           onClick={() => dispatch(toggleFav(!openFav))}
-          otherStyle="hover:bg-white hover:text-red-500 hover:tracking-widest hover:border-red-500 w-60 p-2 rounded-full my-4 transition-all duration-500"
+          otherStyle="hover:bg-white hover:text-red-500 hover:tracking-widest hover:border-red-500 w-60 p-2 rounded-full w-full my-4 transition-all duration-500"
         />
       </div>
     </div>
