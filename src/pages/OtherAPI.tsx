@@ -53,17 +53,18 @@ const OtherAPI = () => {
         if(mounted){
           const res = await fetch(url)
           if(!res.ok){
-            return new Error 
+            return new Error(`HTTP 錯誤 : ${res.status}`)
           }
-          setStatus({type: "success" , msg: "已成功獲取資料" })
           const json = await res.json()
-    
+
+          if(!mounted) return
           dispatch(updateData( json ))
+          setStatus({type: "success" , msg: "已成功獲取資料" })
         } 
       }catch(error){
         setStatus({type: "error" , msg: "加載資料失敗!!!" })
-        const msg = error instanceof Error ? error.message : error
-        console.log(error , msg)
+        const msg = error instanceof Error ? error.message : "發生未知錯誤"
+        console.log("API 請求失敗", msg)
       }finally{
         dispatch(setLoading(false))
       }
@@ -77,7 +78,7 @@ const OtherAPI = () => {
   },[currentURL],)
 
   return (
-    <div className='relative w-full h-full px-12 pb-0 text-white'>
+    <div className='relative w-full h-full md:px-12 px-4 pb-0 text-white'>
       
       <div className='other-header gap-4 md:h-[10%] h-auto w-auto flex md:flex-row flex-col items-center justify-center'>
          {/* @ts-ignore */}
@@ -85,7 +86,7 @@ const OtherAPI = () => {
         <FetchStatus type={status.type} msg={status.msg}/>
         <Select/>
       </div>
-      <div className='other-main md:h-[90%] md:p-8  md:overflow-y-auto  w-full'>
+      <div className='other-main lg:h-[90%] h-full md:p-8 w-full'>
         {(status.type === "success" && currentURL === link.bike_url )  && <YouBike />}
         {(status.type === "success" ) && currentURL === link.weather_url   && <Weather />}
       </div>

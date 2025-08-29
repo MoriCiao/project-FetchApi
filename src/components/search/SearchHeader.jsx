@@ -19,7 +19,7 @@ const Header = ({ toHeadrProps }) => {
     >
       <BgImage type="header" />
 
-      <div className=" w-full ">
+      <div className="md:block hidden w-full">
         <h1 className="text-[1.25rem] text-white text-center">
           Search for
           <br />
@@ -58,7 +58,7 @@ const Header = ({ toHeadrProps }) => {
           otherStyle="border-0 text-white bg-black cursor-pointer py-1"
         />
       </div>
-      <div className="text-white flex xl:flex-col md:flex-row sm:gap-2 justify-center items-center w-full">
+      <div className="md:block hidden text-white flex xl:flex-col md:flex-row sm:gap-2 justify-center items-center w-full">
         <Button
           label="🩷 Favorites 🩷"
           onClick={() => dispatch(toggleFav(!openFav))}

@@ -43,7 +43,7 @@ const Map :React.FC<MapParameter> = ({lat,long}) => {
         center={defaultCenter}
         zoom={18}
         scrollWheelZoom
-        className="w-full h-full"
+        className="w-full h-[70vh] "
     >  
       <TileLayer
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

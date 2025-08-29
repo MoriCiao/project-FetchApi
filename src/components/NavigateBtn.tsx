@@ -21,7 +21,7 @@ const NavigateBtn = ({to, label, className} :NavProps): React.JSX.Element => {
     }
 
   return (
-    <button className= {`px-2 border w-25 h-10 bg-black text-white rounded-md ${className}`} onClick={()=>handleCleanBack(to)}>{label}</button>
+    <button className= {`px-2 border md:w-25 h-10 bg-black text-white rounded-md ${className}`} onClick={()=>handleCleanBack(to)}>{label}</button>
   )
 }
 

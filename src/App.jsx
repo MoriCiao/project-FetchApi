@@ -45,8 +45,8 @@ function App() {
         {pathname === "/" || (
           <NavigateBtn
             to="/"
-            label="返回首頁"
-            className="absolute sm:top-1/2 top-4 sm:left-5 left-4 cursor-pointer hover:bg-white hover:text-black transition duration-500"
+            label="首頁"
+            className="absolute top-1/2 left-4 -translate-y-1/2 cursor-pointer hover:bg-white hover:text-black transition duration-500"
           />
         )}
       </div>

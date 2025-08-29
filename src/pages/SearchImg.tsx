@@ -5,14 +5,14 @@ import SearchResult from '../components/search/SearchResult';
 import MyFavorites from '../components/search/MyFavorites';
 import Button from '../components/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import {getData, moreData,setLoading} from "../features/search/searchSlice"
+import {getData, moreData,setLoading,toggleFav} from "../features/search/searchSlice"
 import StatusFrame from '../components/StatusFrame';
 
 
 const SearchImg = () => {
   const [page, setPage] = useState<number>(1);
   const currentSearchRef = useRef<HTMLInputElement>(null);
-  const { isAuth, APIkey ,ImgData ,openFav, keyword,initialURL, status} = useSelector((state:any) => state.search)
+  const { isAuth, APIkey  ,openFav , keyword,initialURL, status} = useSelector((state:any) => state.search)
   const dispatch = useDispatch()
 
   const searchURL = async (url:string) => {
@@ -88,16 +88,17 @@ const SearchImg = () => {
 
   return (
     <div className={`w-full h-full relative flex md:flex-row flex-col`}>
-      <div className={`search-header flex-1 h-full `}>
+      <div className={`search-header flex-1 h-full`}>
         <SearchHeader toHeadrProps={toHeadrProps} />
       </div>
       <div className={`search-main relative flex-4 h-full w-full grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 place-items-center gap-4 md:px-4 px-12 pb-8 pt-2`}>
         <SearchResult/>
+        
       </div>
     
 
       {openFav && 
-        <div className='w-full h-full absolute z-10 top-0 left-0 bg-black/50 border border-white flex items-center justify-center'>
+        <div className='w-full h-full absolute z-10 top-0 left-0 bg-black/50 flex items-center justify-center'>
 
         <MyFavorites/>
       </div>}
@@ -106,7 +107,12 @@ const SearchImg = () => {
 
       {/* 更多圖片按鈕 */}
       <Button label={"More"} onClick={handleMore} otherStyle='absolute z-[5] bottom-5 right-10 z-10 w-25 h-10 bg-white/50 text-white rounded-md transition-all duration-500 hover:bg-orange-500 hover:text-black hover:font-bold hover:scale-110'/>
-     
+      
+      <Button
+        label="🩷"
+        onClick={() => dispatch(toggleFav(!openFav))}
+        otherStyle="md:hidden block absolute left-4 bottom-5 z-1 border-0 rounded-full w-10 h-10 text-2xl !px-0 hover:bg-white/50"
+      />
     
     </div>
   )

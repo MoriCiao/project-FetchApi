@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Children, useRef } from 'react'
 import Button from '../Button'
 
 const dataKeys = {
@@ -14,54 +14,63 @@ const dataKeys = {
 }
 
 
-export const TempItems = ({entries ,setIsOpen}) => { 
+const TempItem = ({children}) =>{
+    const x = useRef<HTMLDivElement>(null)
     
+    return (
+        <div ref={x} className={`flex  md:text-xl items-center items-center justify-between p-2 border border-white/50`}>
+            {children}
+        </div>
+    )
+}
 
+export const TempItems = ({entries ,setIsOpen}) => { 
 
+     
     return(
         <div className='flex flex-col gap-2 '>
             {entries.map(([key,value],ertryIndex:number)=> {
                 if("hourly".includes(key)){
                     return(
-                        <div key={ertryIndex} className='flex text-xl justify-between p-2 border border-white/50'>
+                        <TempItem key={ertryIndex}>
                             <h3>{dataKeys[key]}：</h3>
                             <Button 
                             label={'每小時資料'} 
                             otherStyle='rounded-md hover:bg-white hover:text-black'
                             onClick={()=> setIsOpen(prev => !prev )}/>
-                        </div>
+                        </TempItem>
                     )
                 }else if("latitude".includes(key)){
                     return(
-                        <div key={ertryIndex} className='flex text-xl justify-between p-2 border border-white/50'>
+                        <TempItem key={ertryIndex}> 
                             <h3>{dataKeys[key]}：</h3>
-                            <span className='text-sm text-red-400 w-60'>（未必完全精準）負值為 °S</span>
+                            <span className='text-sm text-center text-red-400 md:w-60 w-30'>（未必精準）<br /> 負值為 °S</span>
                             <p className='w-30 text-end'>{value > 0 ? `${String(value.toFixed(2))} °N` : `${String(value.toFixed(2))} °S`}</p>
-                        </div>
+                        </TempItem>
                     )
                 }else if("longitude".includes(key)){
                     return(
-                        <div key={ertryIndex} className='flex text-xl justify-between p-2 border border-white/50'>
+                        <TempItem key={ertryIndex}> 
                             <h3>{dataKeys[key]}：</h3>
-                            <span className='text-sm text-red-400 w-60'>（未必完全精準）負值為 °W</span>
+                            <span className='text-sm text-center text-red-400 md:w-60 w-30'>（未必精準）<br />負值為 °W</span>
                             <p className='w-30 text-end'>{value > 0 ? `${String(value.toFixed(2))} °E` : `${String(value.toFixed(2))} °W`}</p>
-                        </div>
+                        </TempItem>
                     )
                 }else if("elevation".includes(key)){
                     return(
-                        <div key={ertryIndex} className='flex text-xl justify-between p-2 border border-white/50'>
+                        <TempItem key={ertryIndex}> 
                             <h3>{dataKeys[key]}：</h3>
                             <p>{String(value)} m</p>
-                        </div>
+                        </TempItem>
                     )
                 }else if(["hourly_units","timezone_abbreviation"].includes(key)){
                     return null
                 }
                 return(
-                    <div key={ertryIndex} className='flex text-xl justify-between p-2 border border-white/50'>
+                    <TempItem key={ertryIndex}>
                         <h3>{dataKeys[key]}：</h3>
                         <p>{String(value)}</p>
-                    </div>
+                    </TempItem>
                 )
             })}
         </div>
@@ -78,8 +87,15 @@ export const Hourly = ({data,isOpen,setIsOpen}) => {
     }   
 
   return (
-    <div className={`hourly absolute z-[10] left-0 top-0 flex flex-col gap-4 max-w-1/2 w-150 h-200 border border-white/50 p-8 transition duration-1000 bg-black/80 overflow-y-auto ${isOpen ? "translate-x-0" : "-translate-x-150"} `}>
-        <div className='flex gap-4 items-center border p-4'>
+    <div className={`hourly absolute z-[10] left-0 top-0 flex flex-col gap-4 md:max-w-1/2 lg:w-150 w-[100vw] md:h-full h-[100vh] md:p-8 p-2 pb-4 transition duration-1000 bg-black/80 overflow-y-auto ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-150 opacity-0"} `}>
+        <div className='w-full flex justify-end px-0'>
+            <Button 
+                label='❎' 
+                onClick={()=>setIsOpen(false)}
+                otherStyle='h-10 text-2xl border-0 px-0'
+            />
+        </div>
+        <div className='flex gap-4 items-center justify-center border p-4 '>
             <h3 className='h-full font-bold'>HOURLY_UNITS(每小時單位)：</h3>
             <div className='h-full'>
             {hourly_units && Object.entries(hourly_units).map(([key,value],index) =>{
@@ -114,7 +130,13 @@ export const Hourly = ({data,isOpen,setIsOpen}) => {
                 </tbody>
             </table>
         </div>
-        
+        <div className='w-full flex justify-center px-0'>
+            <Button 
+                label='Close' 
+                onClick={()=>setIsOpen(false)}
+                otherStyle='h-10 text-2xl px-0 hover:bg-white hover:text-red-500'
+            />
+        </div>
     </div>
   )
 }

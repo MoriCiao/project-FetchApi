@@ -13,7 +13,7 @@ const Select = ({ }) => {
     <div className='flex md:flex-row flex-col gap-2 p-4'>
         <label>請選擇想抓取的資料：</label>
         <select name="apiSelect" id="apiSelect" 
-        className='border rounded-md bg-white text-black px-8' 
+        className='border rounded-md bg-white text-black md:px-8 px-4 md:h-auto h-10 text-xl' 
         value={currentURL}
         onChange={(e)=>dispatch(getUrl(e.target.value))}>
             <option value=""></option>
