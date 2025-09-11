@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
 import { useDispatch, useSelector } from "react-redux";
-import { handleApi, allowApi } from "../../features/search/searchSlice";
+import {
+  handleApi,
+  allowApi,
+  setAuthModal,
+} from "../../features/search/searchSlice";
 const InputAPI = () => {
   const { APIkey, isAuth } = useSelector((state) => state.search);
 
@@ -10,7 +14,7 @@ const InputAPI = () => {
     if (APIkey) {
       dispatch(allowApi(true));
     } else {
-      alert("請輸入正確的API...");
+      dispatch(setAuthModal({ status: true, text: "請輸入正確的 API " }));
     }
   };
 

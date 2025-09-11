@@ -7,6 +7,7 @@ import YouBike from '../components/other/YouBike'
 import Weather from '../components/other/Weather'
 import StatusFrame from '../components/StatusFrame'
 import Button from '../components/Button'
+import { Fade } from 'react-awesome-reveal'
 
 
 type status = { type :  "idle" | "loading" | "success" | "error" , msg :string}
@@ -78,21 +79,24 @@ const OtherAPI = () => {
   },[currentURL],)
 
   return (
-    <div className='relative w-full h-full md:px-12 px-4 pb-0 text-white'>
-      
-      <div className='other-header gap-4 md:h-[10%] h-auto w-auto flex md:flex-row flex-col items-center justify-center'>
-         {/* @ts-ignore */}
-        <Button label='Reset' onClick={handleReset} otherStyle="rounded-md md:w-auto w-full max-w-80 py-2"/>
-        <FetchStatus type={status.type} msg={status.msg}/>
-        <Select/>
-      </div>
-      <div className='other-main lg:h-[90%] h-full md:p-8 w-full'>
-        {(status.type === "success" && currentURL === link.bike_url )  && <YouBike />}
-        {(status.type === "success" ) && currentURL === link.weather_url   && <Weather />}
-      </div>
-      {( statusApi.isLoading )&& <StatusFrame/>}
+    <Fade className={`w-full h-full`}>
 
-    </div>
+      <div className='relative w-full h-full md:px-12 px-4 pb-0 text-white'>
+        
+        <div className='other-header gap-4 md:h-[10%] h-auto w-auto flex md:flex-row flex-col items-center justify-center'>
+          {/* @ts-ignore */}
+          <Button label='Reset' onClick={handleReset} otherStyle="rounded-md md:w-auto w-full max-w-80 py-2"/>
+          <FetchStatus type={status.type} msg={status.msg}/>
+          <Select/>
+        </div>
+        <div className='other-main lg:h-[90%] h-full md:p-8 w-full'>
+          {(status.type === "success" && currentURL === link.bike_url )  && <YouBike />}
+          {(status.type === "success" ) && currentURL === link.weather_url   && <Weather />}
+        </div>
+        {( statusApi.isLoading )&& <StatusFrame/>}
+
+      </div>
+    </Fade>
   )
 }
 

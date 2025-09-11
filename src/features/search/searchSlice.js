@@ -4,6 +4,10 @@ const initialState = {
   keyword: "",
   APIkey: "",
   isAuth: false,
+  authModal: {
+    status: false,
+    text: "",
+  },
   ImgData: [],
   status: {
     isLoading: false,
@@ -63,6 +67,16 @@ const searchSlice = createSlice({
         status: { ...state.status, isDownload: action.payload },
       };
     },
+    setAuthModal(state, action) {
+      const { status, text } = action.payload;
+      return {
+        ...state,
+        authModal: {
+          status,
+          text,
+        },
+      };
+    },
   },
 });
 
@@ -77,6 +91,7 @@ export const {
   isLike,
   allClean,
   setDownload,
+  setAuthModal,
 } = searchSlice.actions;
 
 export default searchSlice.reducer;

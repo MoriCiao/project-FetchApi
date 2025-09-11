@@ -4,6 +4,7 @@ import AppRoutes from "./routes/AppRoutes";
 import AppOutlay from "./pages/AppOutlay";
 import NavigateBtn from "./components/NavigateBtn";
 import Title from "./components/Title";
+import { Fade } from "react-awesome-reveal";
 
 function App() {
   const { pathname } = useLocation();
@@ -50,14 +51,16 @@ function App() {
           />
         )}
       </div>
-      <div
-        className={`w-full lg:h-[90%] h-full flex md:flex-nowrap flex-wrap items-center justify-center lg:gap-15 sm:gap-4 gap-4 ${
-          pathname !== "/" ? "p-0" : "p-20"
-        }`}
-      >
-        <AppRoutes />
-        <AppOutlay />
-      </div>
+      <Fade className="w-full h-full">
+        <div
+          className={`w-full h-full flex md:flex-nowrap flex-wrap items-center justify-center ${
+            pathname !== "/" ? "p-0 " : "p-20 lg:gap-15 gap-4"
+          }`}
+        >
+          <AppRoutes />
+          <AppOutlay />
+        </div>
+      </Fade>
     </section>
   );
 }

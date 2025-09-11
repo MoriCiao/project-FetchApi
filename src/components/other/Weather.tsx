@@ -35,22 +35,22 @@ const Weather = () => {
 
 
         <div className='flex md:flex-2  flex-col gap-4 w-full px-4 pb-4'>
-            <div className='w-full flex md:flex-row flex-col items-center justify-around text-xl gap-4 '>
+            <div className='w-full flex md:flex-row flex-col items-center justify- text-xl gap-4 '>
                 <div className='flex xl:flex-row flex-col items-center py-2 w-full'>
-                    <label htmlFor=""  className='md:hidden block'>經度：</label>
+                    <label htmlFor=""  className='block w-20'>經度：</label>
                     <KeywordInput 
                     keyword={inputlocation.latitude}
                     placeholder='經度：'
                     onChange={(e)=> setInputLocaltion(prev => ({...prev , latitude: e.target.value}))}
-                    otherStyle='text-center rounded-md bg-white text-black h-10 md:w-40 w-full'/>
+                    otherStyle='text-center rounded-md bg-white text-black h-10  w-full'/>
                 </div>
                 <div className='flex xl:flex-row flex-col items-center py-2 w-full'>
-                    <label htmlFor=""  className='md:hidden block'>緯度：</label>
+                    <label htmlFor=""  className='block w-20'>緯度：</label>
                     <KeywordInput 
                         keyword={inputlocation.longitude}
                         placeholder='緯度：'
                         onChange={(e)=> setInputLocaltion(prev => ({...prev , longitude: e.target.value}))}
-                        otherStyle='text-center rounded-md bg-white text-black h-10 md:w-40 w-full'/>
+                        otherStyle='text-center rounded-md bg-white text-black h-10  w-full'/>
                 </div>
                 <Button label="Search" 
                     onClick={()=> dispatch(changeLocation(inputlocation))}

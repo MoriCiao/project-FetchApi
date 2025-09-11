@@ -21,6 +21,7 @@
     "leaflet": "^1.9.4",
     "nanoid": "^5.1.5",
     "react": "^19.1.0",
+    "react-awesome-reveal": "^4.3.1",
     "react-dom": "^19.1.0",
     "react-leaflet": "^5.0.0",
     "react-redux": "^9.2.0",

@@ -6,6 +6,7 @@ import {
   allClean,
   setDownload,
   isLike,
+  setAuthModal,
 } from "../../features/search/searchSlice";
 import PhotoCard from "./PhotoCard";
 import Button from "../Button";
@@ -18,8 +19,7 @@ const MyFavorites = ({}) => {
 
   const handleDownload = async () => {
     if (favorites.length === 0) {
-      console.warn("無資料可以下載");
-      alert("無資料可以下載");
+      dispatch(setAuthModal({ status: true, text: "無資料可以下載" }));
       return;
     }
     dispatch(setDownload(true));
