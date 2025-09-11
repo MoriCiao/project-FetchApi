@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { findDistrict, findAddress } from "../../features/otherApi/otherSlice"
 import KeywordInput from '../KeywordInput'
 import Pagination from './Pagination'
-import Select from './select'
-import Button from '../Button'
+
 
 const data_per_page = 20
 

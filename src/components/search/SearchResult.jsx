@@ -1,4 +1,3 @@
-import React, { memo } from "react";
 import InputAPI from "./InputAPI";
 import BgImage from "../BgImage";
 import { useDispatch, useSelector } from "react-redux";
