@@ -53,9 +53,9 @@ export default function YouBike() {
             </div>
             <p>目前已獲取 {currentData.length} 筆資料</p>
         </div>
-        <div className='w-full md:h-full h-150 overflow-auto'>
+        <div className='w-full md:h-full h-150 overflow-auto flex '>
 
-        <table className='w-400 table-fixed border-collapse md:h-auto h-150'>
+        <table className='w-full table-fixed border-collapse md:h-auto h-150'>
             <thead className='sticky -top-1 '>
                 <tr className='w-full bg-gray-500 text-white'>
                     <th className={`w-20 py-2 px-4 border border-white/50`}>編號</th>
