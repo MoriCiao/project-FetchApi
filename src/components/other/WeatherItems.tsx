@@ -1,5 +1,5 @@
-import {  useRef } from 'react'
 import Button from '../Button'
+import { DataWeather } from './Weather'
 
 const dataKeys = {
     latitude : "緯度",
@@ -13,27 +13,32 @@ const dataKeys = {
     hourly : "每小時天氣資料"
 }
 
+type TempItemPros = {
+    children : React.ReactNode
+}
 
-const TempItem = ({children}) =>{
-    const x = useRef<HTMLDivElement>(null)
-    
+const TempItem= ({children}:TempItemPros) :React.ReactNode=>{
     return (
-        <div ref={x} className={`flex  md:text-xl items-center items-center justify-between p-2 border border-white/50`}>
+        <div className={`flex  md:text-xl items-center justify-between p-2 border border-white/50`}>
             {children}
         </div>
     )
 }
 
-export const TempItems = ({entries ,setIsOpen}) => { 
+type TempItemsProps = {
+    entries :any[] ,
+    setIsOpen :React.Dispatch<React.SetStateAction<boolean>>
+}
 
-     
+export const TempItems = ({entries ,setIsOpen}:TempItemsProps) => { 
+    console.log(entries)
     return(
         <div className='flex flex-col gap-2 '>
-            {entries.map(([key,value],ertryIndex:number)=> {
+            {entries.map(([key ,value],entryIndex:number)=> {
                 if("hourly".includes(key)){
                     return(
-                        <TempItem key={ertryIndex}>
-                            <h3>{dataKeys[key]}：</h3>
+                        <TempItem key={entryIndex}>
+                            <h3>{(dataKeys as any)[key]}：</h3>
                             <Button 
                             label={'每小時資料'} 
                             otherStyle='rounded-md hover:bg-white hover:text-black'
@@ -42,24 +47,24 @@ export const TempItems = ({entries ,setIsOpen}) => {
                     )
                 }else if("latitude".includes(key)){
                     return(
-                        <TempItem key={ertryIndex}> 
-                            <h3>{dataKeys[key]}：</h3>
+                        <TempItem key={entryIndex}> 
+                            <h3>{(dataKeys as any)[key]}：</h3>
                             <span className='text-sm text-center text-red-400 md:w-60 w-30'>（未必精準）<br /> 負值為 °S</span>
                             <p className='w-30 text-end'>{value > 0 ? `${String(value.toFixed(2))} °N` : `${String(value.toFixed(2))} °S`}</p>
                         </TempItem>
                     )
                 }else if("longitude".includes(key)){
                     return(
-                        <TempItem key={ertryIndex}> 
-                            <h3>{dataKeys[key]}：</h3>
+                        <TempItem key={entryIndex}> 
+                            <h3>{(dataKeys as any)[key]}：</h3>
                             <span className='text-sm text-center text-red-400 md:w-60 w-30'>（未必精準）<br />負值為 °W</span>
                             <p className='w-30 text-end'>{value > 0 ? `${String(value.toFixed(2))} °E` : `${String(value.toFixed(2))} °W`}</p>
                         </TempItem>
                     )
                 }else if("elevation".includes(key)){
                     return(
-                        <TempItem key={ertryIndex}> 
-                            <h3>{dataKeys[key]}：</h3>
+                        <TempItem key={entryIndex}> 
+                            <h3>{(dataKeys as any)[key]}：</h3>
                             <p>{String(value)} m</p>
                         </TempItem>
                     )
@@ -67,8 +72,8 @@ export const TempItems = ({entries ,setIsOpen}) => {
                     return null
                 }
                 return(
-                    <TempItem key={ertryIndex}>
-                        <h3>{dataKeys[key]}：</h3>
+                    <TempItem key={entryIndex}>
+                        <h3>{(dataKeys as any)[key]}：</h3>
                         <p>{String(value)}</p>
                     </TempItem>
                 )
@@ -77,7 +82,15 @@ export const TempItems = ({entries ,setIsOpen}) => {
     )
 }
 
-export const Hourly = ({data,isOpen,setIsOpen}) => {
+
+interface HourlyProps {
+    data : DataWeather[] 
+    isOpen : boolean
+    setIsOpen : React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const Hourly = ({data, isOpen, setIsOpen} :HourlyProps) => {
+    console.log(data)
     const hourly_units = data?.[0]?.hourly_units
     const hourly = data?.[0]?.hourly
     const timeList = hourly ? (Object.values(hourly)[0] as string[]) : []

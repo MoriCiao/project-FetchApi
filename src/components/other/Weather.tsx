@@ -7,6 +7,24 @@ import { changeLocation } from "../../features/otherApi/otherSlice"
 import Button from '../Button'
 import Map from '../Map'
 
+export type DataWeather = {
+    latitude : number
+    longitude : number
+    utc_offset_seconds: number
+    generationtime_ms: number
+    elevation: number
+    timezone: string
+    timezone_abbreviation : string
+    hourly : {
+        time: string[]
+        temperature_2m : number[]
+    }
+    hourly_units:{
+        time: string
+        temperature_2m: string
+    }
+}   
+
 const Weather = () => {
     const {data , currentURL, localtion} = useSelector((state:any)=>state.otherApi)
     const [ isOpen, setIsOpen ] = useState(false)
@@ -24,9 +42,7 @@ const Weather = () => {
         }
     }
 
-    useEffect(()=>{
-
-    },[currentURL,data])
+    useEffect(()=>{},[currentURL,data])
  
   return (
     <div 
@@ -64,7 +80,7 @@ const Weather = () => {
 
             </div>
 
-            {data && data.map((i,index)=>{
+            {data && data.map((i :DataWeather, index :number)=>{
                 const entries = Object.entries(i)
                 return (
                     <div key={index} className='flex flex-2 flex-col gap-4 '>

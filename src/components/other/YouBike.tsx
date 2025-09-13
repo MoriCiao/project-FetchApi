@@ -4,8 +4,28 @@ import { findDistrict, findAddress } from "../../features/otherApi/otherSlice"
 import KeywordInput from '../KeywordInput'
 import Pagination from './Pagination'
 
-
 const data_per_page = 20
+
+type DataYoubike = {
+  Quantity: number;
+  act: string;
+  ar: string;
+  aren: string;
+  available_rent_bikes: number;
+  available_return_bikes: number;
+  infoDate: string;
+  infoTime: string;
+  latitude: number;
+  longitude: number;
+  mday: string;
+  sarea: string;
+  sareaen: string;
+  sna: string;
+  snaen: string;
+  sno: string;
+  srcUpdateTime: string;
+  updateTime: string;
+};
 
 export default function YouBike() {
     const {data ,filtered ,link , currentURL , keyword_Dis, keyword} = useSelector((state:any)=>state.otherApi)
@@ -20,11 +40,14 @@ export default function YouBike() {
     const endIndex =  startIndex + data_per_page
     const CurrentItems = currentData.slice(startIndex, endIndex)
 
-    function findDis(obj){
-        let result = data.reduce((acc, cur) => {
+    function findDis<
+        T extends Record<string , number | string>,
+        >(obj : T[]){
+        let result = obj.reduce<Record<string, number>>((acc , cur) => {   
             acc[cur.sarea] = (acc[cur.sarea] || 0 ) +1
             return acc
         },{})
+     
         return Object.entries(result)
     }
     useEffect(()=>{
@@ -68,7 +91,7 @@ export default function YouBike() {
                     </tr>
                 </thead>
                 <tbody>
-                    {Array.isArray(data) && isBike &&  CurrentItems.map((d, index :number) :React.ReactNode=>{
+                    {Array.isArray(data) && isBike &&  CurrentItems.map((d :DataYoubike, index :number) :React.ReactNode=>{
                         const displayIndex = index + 1
                         const address = d.sarea + d.ar
                         return (

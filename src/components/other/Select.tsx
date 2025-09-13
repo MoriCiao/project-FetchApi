@@ -3,8 +3,6 @@ import React from 'react'
 import { getUrl} from "../../features/otherApi/otherSlice"
 import { useDispatch, useSelector } from 'react-redux'
 
-
-
 const Select = ({ }) => {
     const { link ,currentURL} = useSelector((state: any) => state.otherApi)
     const dispatch = useDispatch()

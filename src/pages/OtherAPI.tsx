@@ -9,10 +9,7 @@ import StatusFrame from '../components/StatusFrame'
 import Button from '../components/Button'
 import { Fade } from 'react-awesome-reveal'
 
-
 type status = { type :  "idle" | "loading" | "success" | "error" , msg :string}
-
-
 
 const OtherAPI = () => {
   const { currentURL, link , statusApi} = useSelector((state: any) => state.otherApi)
