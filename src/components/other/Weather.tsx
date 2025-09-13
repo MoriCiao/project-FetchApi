@@ -14,9 +14,15 @@ const Weather = () => {
         latitude : localtion.latitude,
         longitude : localtion.longitude
   })
-   const dispatch = useDispatch()
+  const mapRef = useRef<HTMLDivElement | null>(null)
 
-    
+   const dispatch = useDispatch()
+    const handleSearch = () => {
+        dispatch(changeLocation(inputlocation))
+        if(mapRef.current){
+            mapRef.current.scrollIntoView({behavior: "smooth" , block: "start"})
+        }
+    }
 
     useEffect(()=>{
 
@@ -53,8 +59,8 @@ const Weather = () => {
                         otherStyle='text-center rounded-md bg-white text-black h-10  w-full'/>
                 </div>
                 <Button label="Search" 
-                    onClick={()=> dispatch(changeLocation(inputlocation))}
-                    otherStyle='rounded-md hover:bg-white hover:text-orange-500 h-10'/>
+                    onClick={ handleSearch}
+                    otherStyle='rounded-md hover:bg-orange-500/20 hover:text-orange-500 h-10 xl:max-w-40 w-full'/>
 
             </div>
 
@@ -83,7 +89,7 @@ const Weather = () => {
             })}
         </div>
         
-        <div className='lg:hidden relative z-[1] w-full px-4 pb-10 h-[70vh] md:flex-3 '>
+        <div ref={mapRef} className='xl:hidden relative z-[1] w-full px-4 pb-10 h-[70vh] md:flex-3'>
          <Map lat={inputlocation.latitude} long={inputlocation.longitude} />
         </div>
 
