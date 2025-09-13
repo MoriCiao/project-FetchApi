@@ -79,17 +79,17 @@ const OtherAPI = () => {
   },[currentURL],)
 
   return (
-    <Fade className={`w-full h-full`}>
+    <Fade triggerOnce={true} className={`w-full h-full`}>
 
       <div className='relative w-full h-full md:px-12 px-4 pb-0 text-white'>
         
         <div className='other-header gap-4 md:h-[10%] h-auto w-auto flex md:flex-row flex-col items-center justify-center'>
           {/* @ts-ignore */}
-          <Button label='Reset' onClick={handleReset} otherStyle="rounded-md md:w-auto w-full max-w-80 py-2"/>
+          <Button label='Reset' onClick={handleReset} otherStyle="rounded-md md:w-auto w-full max-w-80 py-2 bg-white/20 hover:bg-white/50 hover:text-black transition duration-200"/>
           <FetchStatus type={status.type} msg={status.msg}/>
           <Select/>
         </div>
-        <div className='other-main lg:h-[90%] h-full md:p-8 w-full'>
+        <div className='other-main lg:h-[90%] h-full md:p-8 w-full overflow-auto'>
           {(status.type === "success" && currentURL === link.bike_url )  && <YouBike />}
           {(status.type === "success" ) && currentURL === link.weather_url   && <Weather />}
         </div>

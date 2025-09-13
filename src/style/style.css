@@ -14,6 +14,8 @@ html, body {
 }
 
 .search-main,
+.other-main,
+.weather-container,
 .favorites-content {
   overflow-y: overlay;
   scrollbar-width: none;
