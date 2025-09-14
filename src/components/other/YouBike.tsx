@@ -100,7 +100,7 @@ export default function YouBike() {
                                 <th className={`py-2 px-4 border border-white/50`}>{d.sarea}</th>
                                 <th className={`py-2 px-4 border border-white/50`}>{d.ar}</th>
                                 <th className={`border border-white/50 `}>
-                                    <a href={`https://www.google.com/maps?q=${address}`} className='inline-block w-full h-full' target="_blank" rel="noopener noreferrer">📍</a>
+                                    <a href={`https://www.google.com/maps?q=${address}`} className='block w-full h-full flex items-center justify-center' target="_blank" rel="noopener noreferrer">📍</a>
                                 </th>
                                 <th className={`py-2 px-4 border border-white/50`}>{d.available_rent_bikes}</th>
                                 <th className={`py-2 px-4 border border-white/50`}>{d.available_return_bikes}</th>
