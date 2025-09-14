@@ -91,7 +91,7 @@ const SearchImg = () => {
 
   return (
     <Fade className={`w-full h-full`}>
-      <div className='w-full h-full relative flex md:flex-row flex-col'>
+      <div className='w-full h-full relative flex lg:flex-row flex-col'>
         {authModal.status && <AuthModal/>}
         <div className={`search-header flex-1 h-full`}>
           <SearchHeader toHeadrProps={toHeadrProps} />
@@ -116,7 +116,7 @@ const SearchImg = () => {
         <Button
           label="🩷"
           onClick={() => dispatch(toggleFav(!openFav))}
-          otherStyle="md:hidden block md:absolute fixed  left-4 bottom-5 z-1 border-0 rounded-full w-10 h-10 text-2xl !px-0 hover:bg-white/50"
+          otherStyle="lg:hidden block lg:absolute fixed  left-4 bottom-5 z-1 border-0 rounded-full w-10 h-10 text-2xl !px-0 hover:bg-white/50"
         />
       </div>
     </Fade>
