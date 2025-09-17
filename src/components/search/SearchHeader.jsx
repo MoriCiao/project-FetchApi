@@ -15,12 +15,12 @@ const Header = ({ toHeadrProps }) => {
   });
   return (
     <div
-      className={`relative z-1 w-full lg:h-full h-[30vh] p-4 overflow-hidden flex gap-2 items-center justify-center col-start-1 col-span-2 xl:shadow-[10px_0px_20px_rgba(0,0,0,1)] md:shadow-[0_10px_20px_rgba(0,0,0,1)] flex flex-col `}
+      className={`relative z-1 col-span-2 col-start-1 flex h-[30vh] w-full flex-col items-center justify-center gap-2 overflow-hidden p-4 md:shadow-[0_10px_20px_rgba(0,0,0,1)] lg:h-full xl:shadow-[10px_0px_20px_rgba(0,0,0,1)]`}
     >
       <BgImage type="header" />
 
-      <div className="lg:block hidden w-full">
-        <h1 className="text-[1.25rem] text-white text-center">
+      <div className="hidden w-full lg:block">
+        <h1 className="text-center text-[1.25rem] text-white">
           Search for
           <br />
           <motion.span className="text-[1.5rem]">
@@ -37,10 +37,10 @@ const Header = ({ toHeadrProps }) => {
         </h1>
       </div>
       <div
-        className={`search-area lg:w-full w-[80%] border-0 rounded-md overflow-hidden flex flex-col shadow-[0px_0px_15px_rgba(255,255,255,.3)] relative z-1`}
+        className={`search-area relative z-1 flex w-[80%] flex-col overflow-hidden rounded-md border-0 shadow-[0px_0px_15px_rgba(255,255,255,.3)] lg:w-full`}
       >
         <input
-          className={`text-center h-[2rem] w-full bg-black text-white`}
+          className={`h-[2rem] w-full bg-black text-center text-white`}
           type="text"
           placeholder="請輸入關鍵字...."
           value={keyword}
@@ -58,7 +58,7 @@ const Header = ({ toHeadrProps }) => {
           otherStyle="border-0 text-white bg-black cursor-pointer py-1"
         />
       </div>
-      <div className="lg:block hidden text-white flex xl:flex-col md:flex-row sm:gap-2 justify-center items-center w-full">
+      <div className="flex hidden w-full items-center justify-center text-white sm:gap-2 md:flex-row lg:block xl:flex-col">
         <Button
           label="🩷 Favorites 🩷"
           onClick={() => dispatch(toggleFav(!openFav))}

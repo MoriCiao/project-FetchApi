@@ -1,17 +1,15 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode } from "react";
 
 type ItemProps = {
-  label : string
-  text:string
-}
+  label: string;
+  text: string;
+};
 
-export const ObjectItem: React.FC<ItemProps> = ({label ,text})=> {
+export const ObjectItem: React.FC<ItemProps> = ({ label, text }) => {
   return (
-    <div className='flex border py-2 px-4'>
+    <div className="flex border px-4 py-2">
       <label>{label.toUpperCase()}：</label>
       <p>{text}</p>
     </div>
-
-  )
-}
-
+  );
+};

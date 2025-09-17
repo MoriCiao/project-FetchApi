@@ -20,12 +20,12 @@ const InputAPI = () => {
 
   return (
     <>
-      <div className="API-content absolute md:top-1/4 md:left-1/2  md:-translate-x-1/2 border border-white flex flex-col gap-4 items-center m-auto justify-center rounded-md p-4  bg-gradient-to-br from-white/10 via-white/20 to-white/10  text-white lg:w-150 sm:w-100 w-[80vw]">
-        <label className="md:text-[1.5rem]  font-bold mb-2" htmlFor="">
+      <div className="API-content absolute m-auto flex w-[80vw] flex-col items-center justify-center gap-4 rounded-md border border-white bg-gradient-to-br from-white/10 via-white/20 to-white/10 p-4 text-white sm:w-100 md:top-1/4 md:left-1/2 md:-translate-x-1/2 lg:w-150">
+        <label className="mb-2 font-bold md:text-[1.5rem]" htmlFor="">
           請輸入 Pexels API Key
         </label>
         <input
-          className=" text-center rounded-md h-[2rem] mb-2 border md:w-[80%]  text-white"
+          className="mb-2 h-[2rem] rounded-md border text-center text-white md:w-[80%]"
           type="text"
           placeholder="Pexels API Key..."
           value={APIkey}

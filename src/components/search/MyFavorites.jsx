@@ -55,9 +55,9 @@ const MyFavorites = ({}) => {
     <section
       className={`favorites ${
         openFav ? "" : "hidden"
-      }  z-[10] bg-black/50 md:w-[80%] w-full md:h-[80%] h-full p-4 rounded-xl p-0 overflow-hidden border border-white/50 flex flex-col justify-start gap-4`}
+      } z-[10] flex h-full w-full flex-col justify-start gap-4 overflow-hidden rounded-xl border border-white/50 bg-black/50 p-0 p-4 md:h-[80%] md:w-[80%]`}
     >
-      <div className="favorites-nav w-full md:h-15 h-auto flex  md:pl-5 relative flex items-center justify-between">
+      <div className="favorites-nav relative flex h-auto w-full items-center justify-between md:h-15 md:pl-5">
         <div className="flex gap-4">
           <Button
             label="All Clean"
@@ -77,7 +77,7 @@ const MyFavorites = ({}) => {
         />
       </div>
       {favorites.length !== 0 ? (
-        <div className="favorites-content w-full h-[90%] p-4 grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2  space-y-4 place-items-start justify-center overflow-y-auto">
+        <div className="favorites-content grid h-[90%] w-full grid-cols-1 place-items-start justify-center gap-2 space-y-4 overflow-y-auto p-4 md:grid-cols-2 xl:grid-cols-4">
           {favorites.map((f) => {
             return (
               <PhotoCard
@@ -93,7 +93,7 @@ const MyFavorites = ({}) => {
           })}
         </div>
       ) : (
-        <p className="text-white text-2xl text-center flex items-center justify-center w-full h-full">
+        <p className="flex h-full w-full items-center justify-center text-center text-2xl text-white">
           目前無任何收藏...
         </p>
       )}

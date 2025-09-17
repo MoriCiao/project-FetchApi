@@ -1,15 +1,17 @@
-import { p } from 'framer-motion/client'
-import React from 'react'
+import { p } from "framer-motion/client";
+import React from "react";
 
-type tagProps ={
-    label: string
-    otherStyle?: string
-}
+type tagProps = {
+  label: string;
+  otherStyle?: string;
+};
 
-const Tag :React.FC<tagProps> = ({label, otherStyle}) => {
+const Tag: React.FC<tagProps> = ({ label, otherStyle }) => {
   return (
-    <span className={`border px-4 rounded-full cursor-default ${otherStyle}`}>{label}</span>
-  )
-}
+    <span className={`cursor-default rounded-full border px-4 ${otherStyle}`}>
+      {label}
+    </span>
+  );
+};
 
-export default Tag
+export default Tag;

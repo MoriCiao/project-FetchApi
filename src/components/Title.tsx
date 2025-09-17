@@ -1,28 +1,30 @@
-import React from 'react'
-import { useLocation } from 'react-router';
-
+import React from "react";
+import { useLocation } from "react-router";
 
 type TitleProps = {
-    title : string,
-    otherStyle? : string
-}
+  title: string;
+  otherStyle?: string;
+};
 
-const Title = ({title,otherStyle} :TitleProps) => {
+const Title = ({ title, otherStyle }: TitleProps) => {
   const { pathname } = useLocation();
-  
-    const bg =
-      pathname === "/"
-        ? "bg-transparent"
-        : pathname === "/searchImg"
+
+  const bg =
+    pathname === "/"
+      ? "bg-transparent"
+      : pathname === "/searchImg"
         ? "bg-black"
         : pathname === "/otherApi"
-        ? "bg-transparent"
-        : null;
-
+          ? "bg-transparent"
+          : null;
 
   return (
-    <h1 className={`w-full h-full flex items-center justify-center text-3xl font-[900] tracking-wide select-none ${bg} ${otherStyle}`}>{title}</h1>
-  )
-}
+    <h1
+      className={`flex h-full w-full items-center justify-center text-3xl font-[900] tracking-wide select-none ${bg} ${otherStyle}`}
+    >
+      {title}
+    </h1>
+  );
+};
 
-export default Title
+export default Title;

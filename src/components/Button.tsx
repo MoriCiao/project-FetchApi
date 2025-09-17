@@ -1,18 +1,23 @@
-import React from 'react'
+import React from "react";
 
 type BtnProps = {
-    label: string,
-    otherStyle?: string
-    onClick : () => void,
-}
+  label: string;
+  otherStyle?: string;
+  onClick: () => void;
+};
 
-const Button = ({label, onClick, otherStyle} :BtnProps): React.JSX.Element => {
+const Button = ({
+  label,
+  onClick,
+  otherStyle,
+}: BtnProps): React.JSX.Element => {
   return (
-    <button 
-        className={`border text-large font-bold px-4 cursor-pointer ${otherStyle}`} 
-        onClick={onClick}>
-        {label}
+    <button
+      className={`text-large cursor-pointer border px-4 font-bold ${otherStyle}`}
+      onClick={onClick}
+    >
+      {label}
     </button>
-  )
-}
-export default Button
+  );
+};
+export default Button;

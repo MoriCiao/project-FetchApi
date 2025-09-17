@@ -13,48 +13,48 @@ function App() {
     pathname === "/"
       ? "bg-gradient-to-br from-amber-100 to-amber-200 p-0 "
       : pathname === "/searchImg"
-      ? "bg-black p-0 "
-      : pathname === "/otherApi"
-      ? "bg-gradient-to-br from-zinc-500 to-zinc-800 p-0"
-      : null;
+        ? "bg-black p-0 "
+        : pathname === "/otherApi"
+          ? "bg-gradient-to-br from-zinc-500 to-zinc-800 p-0"
+          : null;
 
   return (
     <section
-      className={`homepage relative w-full h-full flex flex-col  overflow-x-hidden  ${pageStyle} `}
+      className={`homepage relative flex h-full w-full flex-col overflow-x-hidden ${pageStyle} `}
     >
-      <div className="relative lg:h-[10%] h-[20%] py-8 w-full text-center flex items-center justify-center">
+      <div className="relative flex h-[20%] w-full items-center justify-center py-8 text-center lg:h-[10%]">
         <Title
           title={
             pathname === "/"
               ? "Fetch API"
               : pathname === "/searchImg"
-              ? "Search Image"
-              : pathname === "/otherApi"
-              ? "Other API"
-              : null
+                ? "Search Image"
+                : pathname === "/otherApi"
+                  ? "Other API"
+                  : null
           }
           otherStyle={
             pathname === "/"
               ? "text-black"
               : pathname === "/searchImg"
-              ? "text-white"
-              : pathname === "/otherApi"
-              ? "text-white"
-              : null
+                ? "text-white"
+                : pathname === "/otherApi"
+                  ? "text-white"
+                  : null
           }
         />
         {pathname === "/" || (
           <NavigateBtn
             to="/"
             label="首頁"
-            className={`absolute top-1/2 left-4 -translate-y-1/2 cursor-pointer hover:bg-white hover:text-black transition duration-500`}
+            className={`absolute top-1/2 left-4 -translate-y-1/2 cursor-pointer transition duration-500 hover:bg-white hover:text-black`}
           />
         )}
       </div>
-      <Fade className="w-full h-full">
+      <Fade className="h-full w-full">
         <div
-          className={`w-full h-full flex md:flex-nowrap flex-wrap items-center justify-center ${
-            pathname !== "/" ? "p-0 " : "p-20 lg:gap-15 gap-4"
+          className={`flex h-full w-full flex-wrap items-center justify-center md:flex-nowrap ${
+            pathname !== "/" ? "p-0" : "gap-4 p-20 lg:gap-15"
           }`}
         >
           <AppRoutes />

@@ -1,9 +1,10 @@
 :root {
-  --theme-bg: #6699A1;
+  --theme-bg: #6699a1;
   --theme-text: rgb(120, 194, 196);
 }
 
-html, body {
+html,
+body {
   width: 100vw;
   height: 100vh;
 }
@@ -20,4 +21,4 @@ html, body {
   overflow-y: overlay;
   scrollbar-width: none;
   scroll-behavior: smooth;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */

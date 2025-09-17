@@ -1,34 +1,39 @@
-import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react'
-import SearchHeader from '../components/search/SearchHeader';
-import SearchResult from '../components/search/SearchResult';
-import MyFavorites from '../components/search/MyFavorites';
-import Button from '../components/Button';
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import SearchHeader from "../components/search/SearchHeader";
+import SearchResult from "../components/search/SearchResult";
+import MyFavorites from "../components/search/MyFavorites";
+import Button from "../components/Button";
 
-import { useDispatch, useSelector } from 'react-redux';
-import {getData, moreData,setAuthModal,setLoading,toggleFav} from "../features/search/searchSlice"
-import StatusFrame from '../components/StatusFrame';
-import { Fade, Zoom } from 'react-awesome-reveal';
-import AuthModal from '../components/modal/AuthModal';
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getData,
+  moreData,
+  setAuthModal,
+  setLoading,
+  toggleFav,
+} from "../features/search/searchSlice";
+import StatusFrame from "../components/StatusFrame";
+import { Fade, Zoom } from "react-awesome-reveal";
+import AuthModal from "../components/modal/AuthModal";
 
 const SearchImg = () => {
   const [page, setPage] = useState<number>(1);
   const currentSearchRef = useRef<HTMLInputElement>(null);
-  const { isAuth, APIkey  ,openFav , keyword, initialURL, status, authModal} = useSelector((state:any) => state.search)
-  const dispatch = useDispatch()
+  const { isAuth, APIkey, openFav, keyword, initialURL, status, authModal } =
+    useSelector((state: any) => state.search);
+  const dispatch = useDispatch();
 
-  const searchURL = async (url:string) => {
-    if(APIkey){
+  const searchURL = async (url: string) => {
+    if (APIkey) {
       const res = await axios.get(url, {
         headers: { Authorization: APIkey },
-      })
-      if(res.status) {
-        dispatch(getData(res.data.photos))
+      });
+      if (res.status) {
+        dispatch(getData(res.data.photos));
       }
     }
-
-  }
+  };
 
   const handleSearch = async () => {
     if (!keyword || keyword === "") return;
@@ -49,8 +54,8 @@ const SearchImg = () => {
   };
 
   const handleMore = () => {
-    let newUrl :string;
-    const concatData = async (url:string) => {
+    let newUrl: string;
+    const concatData = async (url: string) => {
       // 先抓去後一頁的資料，再把資料連結起來成為新的data
       dispatch(setLoading(true));
       try {
@@ -58,7 +63,7 @@ const SearchImg = () => {
           headers: { Authorization: APIkey },
         });
         let newData = res.data.photos;
-        dispatch(moreData(newData))
+        dispatch(moreData(newData));
         setPage((page) => page + 1);
       } catch (error) {
         alert("發生錯誤...請重新整理頁面");
@@ -75,7 +80,9 @@ const SearchImg = () => {
         concatData(newUrl);
       }
     } else {
-      dispatch(setAuthModal({status : true ,text: "請輸入 API key 開啟此功能"} ))
+      dispatch(
+        setAuthModal({ status: true, text: "請輸入 API key 開啟此功能" }),
+      );
     }
   };
 
@@ -88,31 +95,37 @@ const SearchImg = () => {
     searchURL(initialURL);
   }, [APIkey]);
 
-
   return (
-    <Fade className={`w-full h-full`}>
-      <div className='w-full h-full relative flex lg:flex-row flex-col'>
-        {authModal.status && <AuthModal/>}
-        <div className={`search-header flex-1 h-full`}>
+    <Fade className={`h-full w-full`}>
+      <div className="relative flex h-full w-full flex-col lg:flex-row">
+        {authModal.status && <AuthModal />}
+        <div className={`search-header h-full flex-1`}>
           <SearchHeader toHeadrProps={toHeadrProps} />
         </div>
-        <div className={`search-main relative flex-4 h-full w-full grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 place-items-center gap-4 md:px-4 px-12 pb-8 pt-2`}>
-            <SearchResult/>   
+        <div
+          className={`search-main relative grid h-full w-full flex-4 grid-cols-1 place-items-center gap-4 px-12 pt-2 pb-8 md:grid-cols-2 md:px-4 lg:grid-cols-3 xl:grid-cols-4`}
+        >
+          <SearchResult />
         </div>
-      
 
-        {openFav && 
-        <div className='w-full h-full fixed inset-0 z-10 bg-black/50 backdrop-blur-sm '>
-          <Zoom className='w-full h-full flex items-center justify-center'>
-            <MyFavorites/>
-          </Zoom>
-        </div>}
-        {(status.isLoading || status.isDownload || status.isError )&& <StatusFrame/>}
-        
+        {openFav && (
+          <div className="fixed inset-0 z-10 h-full w-full bg-black/50 backdrop-blur-sm">
+            <Zoom className="flex h-full w-full items-center justify-center">
+              <MyFavorites />
+            </Zoom>
+          </div>
+        )}
+        {(status.isLoading || status.isDownload || status.isError) && (
+          <StatusFrame />
+        )}
 
         {/* 更多圖片按鈕 */}
-        <Button label={"More"} onClick={handleMore} otherStyle='md:absolute fixed z-[5] bottom-5 right-10 z-10 w-25 h-10 bg-white/50 text-white rounded-md transition-all duration-500 hover:bg-orange-500 hover:text-black hover:font-bold hover:scale-110'/>
-        
+        <Button
+          label={"More"}
+          onClick={handleMore}
+          otherStyle="md:absolute fixed z-[5] bottom-5 right-10 z-10 w-25 h-10 bg-white/50 text-white rounded-md transition-all duration-500 hover:bg-orange-500 hover:text-black hover:font-bold hover:scale-110"
+        />
+
         <Button
           label="🩷"
           onClick={() => dispatch(toggleFav(!openFav))}
@@ -120,8 +133,7 @@ const SearchImg = () => {
         />
       </div>
     </Fade>
-  )
-}
+  );
+};
 
-
-export default SearchImg
+export default SearchImg;
